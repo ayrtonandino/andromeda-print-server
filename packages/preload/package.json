@@ -15,6 +15,9 @@
         "build": "vite build",
         "typecheck": "tsc --noEmit"
     },
+    "dependencies": {
+        "electron-store": "10.1.0"
+    },
     "devDependencies": {
         "@app/electron-versions": "*",
         "mlly": "1.7.4",

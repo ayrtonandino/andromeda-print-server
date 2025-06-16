@@ -3,7 +3,7 @@ export interface AppInitConfig {
         path: string
     }
 
-    renderer: {
+    renderer: URL | {
         path: string
-    } | URL
+    }
 }

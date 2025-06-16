@@ -2,6 +2,8 @@ import type { AppInitConfig } from '../AppInitConfig.js'
 import type { AppModule } from '../AppModule.js'
 import type { ModuleContext } from '../ModuleContext.js'
 import { BrowserWindow } from 'electron'
+import { StartServer } from '../services/serverService.js'
+import { CreateAppTray } from './CreateAppTray.js'
 
 class WindowManager implements AppModule {
     readonly #preload: { path: string }
@@ -16,7 +18,13 @@ class WindowManager implements AppModule {
 
     async enable({ app }: ModuleContext): Promise<void> {
         await app.whenReady()
-        await this.restoreOrCreateWindow(true)
+
+        StartServer()
+
+        const mainWindow = await this.restoreOrCreateWindow(true)
+
+        CreateAppTray(mainWindow)
+
         app.on('second-instance', () => this.restoreOrCreateWindow(true))
         app.on('activate', () => this.restoreOrCreateWindow(true))
     }

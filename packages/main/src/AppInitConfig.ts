@@ -1,11 +1,9 @@
 export interface AppInitConfig {
-  preload: {
-    path: string
-  }
-
-  renderer:
-      | {
+    preload: {
         path: string
-      }
-      | URL
+    }
+
+    renderer: {
+        path: string
+    } | URL
 }

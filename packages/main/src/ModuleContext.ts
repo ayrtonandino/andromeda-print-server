@@ -1,3 +1,3 @@
 export interface ModuleContext {
-  readonly app: Electron.App
+    readonly app: Electron.App
 }

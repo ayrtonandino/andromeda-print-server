@@ -3,13 +3,13 @@ import { fileURLToPath } from 'node:url'
 import { initApp } from '@app/main'
 
 if (process.env.NODE_ENV === 'development' || process.env.PLAYWRIGHT_TEST === 'true' || !!process.env.CI) {
-  function showAndExit(...args) {
-    console.error(...args)
-    process.exit(1)
-  }
+    function showAndExit(...args) {
+        console.error(...args)
+        process.exit(1)
+    }
 
-  process.on('uncaughtException', showAndExit)
-  process.on('unhandledRejection', showAndExit)
+    process.on('uncaughtException', showAndExit)
+    process.on('unhandledRejection', showAndExit)
 }
 
 // noinspection JSIgnoredPromiseFromCall
@@ -23,15 +23,15 @@ if (process.env.NODE_ENV === 'development' || process.env.PLAYWRIGHT_TEST === 't
  * as it receives initialization instructions rather than direct module imports.
  */
 initApp(
-  {
-    renderer: (process.env.MODE === 'development' && !!process.env.VITE_DEV_SERVER_URL)
-      ? new URL(process.env.VITE_DEV_SERVER_URL)
-      : {
-        path: fileURLToPath(import.meta.resolve('@app/renderer')),
-      },
+    {
+        renderer: (process.env.MODE === 'development' && !!process.env.VITE_DEV_SERVER_URL)
+            ? new URL(process.env.VITE_DEV_SERVER_URL)
+            : {
+                path: fileURLToPath(import.meta.resolve('@app/renderer')),
+            },
 
-    preload: {
-      path: fileURLToPath(import.meta.resolve('@app/preload/exposed.mjs')),
+        preload: {
+            path: fileURLToPath(import.meta.resolve('@app/preload/exposed.mjs')),
+        },
     },
-  },
 )

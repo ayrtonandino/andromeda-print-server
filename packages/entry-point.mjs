@@ -1,14 +1,15 @@
-import {initApp} from '@app/main';
-import {fileURLToPath} from 'node:url';
+import process from 'node:process'
+import { fileURLToPath } from 'node:url'
+import { initApp } from '@app/main'
 
 if (process.env.NODE_ENV === 'development' || process.env.PLAYWRIGHT_TEST === 'true' || !!process.env.CI) {
   function showAndExit(...args) {
-    console.error(...args);
-    process.exit(1);
+    console.error(...args)
+    process.exit(1)
   }
 
-  process.on('uncaughtException', showAndExit);
-  process.on('unhandledRejection', showAndExit);
+  process.on('uncaughtException', showAndExit)
+  process.on('unhandledRejection', showAndExit)
 }
 
 // noinspection JSIgnoredPromiseFromCall
@@ -23,8 +24,8 @@ if (process.env.NODE_ENV === 'development' || process.env.PLAYWRIGHT_TEST === 't
  */
 initApp(
   {
-    renderer: (process.env.MODE === 'development' && !!process.env.VITE_DEV_SERVER_URL) ?
-      new URL(process.env.VITE_DEV_SERVER_URL)
+    renderer: (process.env.MODE === 'development' && !!process.env.VITE_DEV_SERVER_URL)
+      ? new URL(process.env.VITE_DEV_SERVER_URL)
       : {
         path: fileURLToPath(import.meta.resolve('@app/renderer')),
       },
@@ -33,4 +34,4 @@ initApp(
       path: fileURLToPath(import.meta.resolve('@app/preload/exposed.mjs')),
     },
   },
-);
+)

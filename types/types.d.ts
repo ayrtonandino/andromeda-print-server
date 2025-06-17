@@ -1,6 +1,7 @@
 declare namespace App {
     export interface Config {
         printerUrl: string
+        printerPort: number
         printerModel: string
     }
 

@@ -7,6 +7,12 @@ const schema: Schema<App.Config> = {
         format: 'uri',
         default: 'tcp://192.168.123.123',
     },
+    printerPort: {
+        type: 'number',
+        maximum: 65535,
+        minimum: 0,
+        default: 9100,
+    },
     printerModel: {
         type: 'string',
         enum: ['EPSON', 'STAR'],

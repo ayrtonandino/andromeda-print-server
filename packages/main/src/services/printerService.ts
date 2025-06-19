@@ -1,5 +1,6 @@
 // import { Buffer } from 'node:buffer'
-import { printer as ThermalPrinter, types as Types } from 'node-thermal-printer'
+import type { PrinterTypes } from 'node-thermal-printer'
+import { ThermalPrinter } from 'node-thermal-printer'
 import store from '../../../preload/src/createStore.js'
 
 // class SuperPrinter extends ThermalPrinter {
@@ -63,17 +64,18 @@ import store from '../../../preload/src/createStore.js'
 //     }
 // }
 
-function newPrinter(url = '127.0.0.1', model = 'EPSON') {
+function newPrinter(model: PrinterTypes, url: string, port: number) {
     return new ThermalPrinter({
-        type: model === 'EPSON' ? Types.EPSON : Types.STAR,
-        interface: `tcp://${url}`,
+        type: model,
+        interface: `${url}:${port}`,
     })
 }
 
 function getPrinter() {
     return newPrinter(
-        store.get('printerUrl'),
         store.get('printerModel'),
+        store.get('printerUrl'),
+        store.get('printerPort'),
     )
 }
 

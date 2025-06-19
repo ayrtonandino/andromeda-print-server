@@ -1,17 +1,31 @@
 <script setup lang="ts">
-    // import HelloWorld from './components/HelloWorld.vue'
+    const availablePrinters = ref<string[]>([])
+
+    const defaultData = ref<App.Config | undefined>()
+
+    function getData() {
+        availablePrinters.value = window.api.getAvailablePrinters()
+
+        defaultData.value = window.api.getCoreData()
+    }
+
+    onMounted(() => {
+        getData()
+    })
 </script>
 
 <template>
     <u-app>
-        <div class="grid grid-cols-2 gap-2 px-4 py-2">
-            <div>
-                <hello-world msg="asdf" />
-            </div>
+        <u-container class="py-2">
+            <div v-if="defaultData" class="grid grid-cols-2 gap-6">
+                <div>
+                    <app-config-card :available-printers="availablePrinters" :default-data="defaultData" @sync:data="getData" />
+                </div>
 
-            <div>
-                //
+                <div>
+                    <app-display-config-card :default-data="defaultData" />
+                </div>
             </div>
-        </div>
+        </u-container>
     </u-app>
 </template>

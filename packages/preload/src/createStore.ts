@@ -1,5 +1,8 @@
 import type { Schema } from 'electron-store'
 import Store from 'electron-store'
+import { getAvailablePrinters } from './api.js'
+
+const models = getAvailablePrinters()
 
 const schema: Schema<App.Config> = {
     printerUrl: {
@@ -15,8 +18,8 @@ const schema: Schema<App.Config> = {
     },
     printerModel: {
         type: 'string',
-        enum: ['EPSON', 'STAR'],
-        default: 'EPSON',
+        enum: models,
+        default: models[0],
     },
 }
 

@@ -1,4 +1,5 @@
-import type { printer as ThermalPrinter } from 'node-thermal-printer'
+/* eslint-disable no-console */
+import type { ThermalPrinter } from 'node-thermal-printer'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import express from 'express'
@@ -30,8 +31,9 @@ app.get('/status', async (request, response) => {
             return response.status(400).json({
                 error: 'Printer not connected',
                 printerData: {
-                    printerUrl: store.get('printerUrl'),
                     printerModel: store.get('printerModel'),
+                    printerUrl: store.get('printerUrl'),
+                    printerPort: store.get('printerPort'),
                 },
             })
         }

@@ -1,24 +1,14 @@
 declare namespace App {
     export interface Config {
+        printerModel: import('node-thermal-printer').PrinterTypes
         printerUrl: string
         printerPort: number
-        printerModel: string
-    }
-
-    export interface ElectronStore {
-        set: (key: string, value: string | number) => void
-    }
-
-    export interface Migration {
-        version: string
-        migration: (store: App.ElectronStore) => void
     }
 
     export interface Api {
         closeWindow: () => void
         getCoreData: () => App.Config
-        setCoreData: (value: object) => void
-        getConfigValue: (key: string) => string | number
-        setConfigValue: (key: string, value: object | string | number) => void
+        setCoreData: (value: App.Config) => void
+        getAvailablePrinters: () => string[]
     }
 }

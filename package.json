@@ -1,13 +1,13 @@
 {
-    "name": "root",
+    "name": "andromeda-print-server",
     "type": "module",
-    "version": "3.1.0",
+    "version": "0.0.1",
     "private": true,
-    "description": "Secure boilerplate for Electron app based on Vite",
+    "productName": "Andromeda Thermal Print Server",
+    "description": "HTTP Service for printing on thermal printer from browser",
     "author": {
-        "email": "kozackunisoft@gmail.com",
-        "name": "Alex Kozack",
-        "url": "https://kozack.me"
+        "email": "ayrton.andino@outlook.com",
+        "name": "Ayrton Marcelo Andino Bonazzola"
     },
     "main": "packages/entry-point.mjs",
     "workspaces": [
@@ -17,6 +17,7 @@
         "node": ">=22.0.0"
     },
     "scripts": {
+        "upd": "npm update",
         "build": "npm run build -ws --if-present",
         "compile": "npm run build && electron-builder build --config electron-builder.mjs",
         "test": "npx playwright test ./tests/e2e.spec.ts",
@@ -31,15 +32,15 @@
         "@app/main": "*"
     },
     "devDependencies": {
-        "@antfu/eslint-config": "^4.14.1",
-        "@npmcli/map-workspaces": "4.0.2",
-        "@playwright/test": "1.53.0",
+        "@antfu/eslint-config": "^4.15.0",
+        "@npmcli/map-workspaces": "^4.0.2",
+        "@playwright/test": "^1.53.1",
         "@types/cors": "^2.8.19",
         "@types/luxon": "^3.6.2",
         "@types/node": "24.0.3",
-        "electron": "36.4.0",
+        "electron": "^36.5.0",
         "electron-builder": "26.0.12",
         "glob": "11.0.3",
-        "playwright": "^1.53.0"
+        "playwright": "^1.53.1"
     }
 }

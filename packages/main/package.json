@@ -15,15 +15,15 @@
         "@app/preload": "*",
         "@app/renderer": "*",
         "cors": "^2.8.5",
-        "electron-updater": "6.6.2",
-        "express": "5.1.0",
+        "electron-updater": "^6.6.2",
+        "express": "^5.1.0",
         "express-validation": "^4.1.1",
         "luxon": "^3.6.1"
     },
     "devDependencies": {
         "@app/electron-versions": "*",
-        "electron-devtools-installer": "4.0.0",
-        "typescript": "5.8.3",
-        "vite": "6.3.5"
+        "electron-devtools-installer": "^4.0.0",
+        "typescript": "^5.8.3",
+        "vite": "^6.3.5"
     }
 }

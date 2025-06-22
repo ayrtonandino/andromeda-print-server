@@ -1,5 +1,10 @@
+import { ipcRenderer } from 'electron'
 import { PrinterTypes } from 'node-thermal-printer'
 import configStore from './createStore.js'
+
+export function closeWindow(): void {
+    ipcRenderer.send('closeWindow')
+}
 
 export function getCoreData(): App.Config {
     return configStore.store
@@ -14,6 +19,7 @@ export function getAvailablePrinters(): PrinterTypes[] {
 }
 
 export const api = {
+    closeWindow,
     getCoreData,
     setCoreData,
     getAvailablePrinters,

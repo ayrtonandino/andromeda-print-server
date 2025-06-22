@@ -16,6 +16,8 @@
 
 <template>
     <u-app>
+        <app-nav-bar />
+
         <u-container class="py-2">
             <div v-if="defaultData" class="grid grid-cols-2 gap-6">
                 <div>

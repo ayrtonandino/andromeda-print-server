@@ -5,6 +5,8 @@ import { BrowserWindow } from 'electron'
 import { StartServer } from '../services/serverService.js'
 import { CreateAppTray } from './CreateAppTray.js'
 
+import './CreateAppIpc'
+
 class WindowManager implements AppModule {
     readonly #preload: { path: string }
     readonly #renderer: { path: string } | URL
@@ -32,6 +34,12 @@ class WindowManager implements AppModule {
     async createWindow(): Promise<BrowserWindow> {
         const browserWindow = new BrowserWindow({
             show: false, // Use the 'ready-to-show' event to show the instantiated BrowserWindow.
+            titleBarStyle: 'hidden',
+            width: 900,
+            height: 493,
+            resizable: false,
+            skipTaskbar: true,
+            maximizable: false,
             webPreferences: {
                 nodeIntegration: false,
                 contextIsolation: true,

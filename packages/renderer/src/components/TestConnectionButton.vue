@@ -3,8 +3,8 @@
 
     const toast = useToast()
 
-    function testConnection() {
-        axios
+    async function testConnection() {
+        return axios
             .get('http://localhost:3005/status')
             .then((response) => {
                 toast.add({
@@ -22,9 +22,10 @@
                     color: 'error',
                 })
             })
+        // )
     }
 </script>
 
 <template>
-    <u-button @click="testConnection">Probar Conexión</u-button>
+    <u-button loading-auto @click="testConnection">Probar Conexión</u-button>
 </template>

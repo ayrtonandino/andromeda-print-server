@@ -1,6 +1,8 @@
 declare namespace App {
+    export type PrinterEnum = import('node-thermal-printer').PrinterTypes
+
     export interface Config {
-        printerModel: import('node-thermal-printer').PrinterTypes
+        printerModel: App.PrinterEnum
         printerUrl: string
         printerPort: number
     }
@@ -9,6 +11,6 @@ declare namespace App {
         closeWindow: () => void
         getCoreData: () => App.Config
         setCoreData: (value: App.Config) => void
-        getAvailablePrinters: () => string[]
+        getAvailablePrinters: () => App.PrinterEnum[]
     }
 }

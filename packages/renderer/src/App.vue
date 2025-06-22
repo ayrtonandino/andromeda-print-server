@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    const availablePrinters = ref<string[]>([])
+    const availablePrinters = ref<App.PrinterEnum[]>([])
 
     const defaultData = ref<App.Config | undefined>()
 

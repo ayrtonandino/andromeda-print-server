@@ -3,7 +3,7 @@
     import { ipv4Address, number, required, string } from '@regle/rules'
 
     const props = defineProps<{
-        availablePrinters: string[]
+        availablePrinters: App.PrinterEnum[]
         defaultData: App.Config
     }>()
 

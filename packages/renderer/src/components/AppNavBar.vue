@@ -5,7 +5,7 @@
         window.api.closeWindow()
     }
 
-    const appVersion = import.meta.env.VITE_APP_VERSION || 'DEVELOPMENT'
+    const appVersion = __APP_VERSION__ || 'DEVELOPMENT'
 </script>
 
 <template>

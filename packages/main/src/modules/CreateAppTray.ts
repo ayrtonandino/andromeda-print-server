@@ -7,7 +7,7 @@ export function CreateAppTray(mainWindow: BrowserWindow) {
 
     const contextMenu = Menu.buildFromTemplate([
         {
-            label: import.meta.env.VITE_APP_VERSION || 'DEVELOPMENT',
+            label: __APP_VERSION__ || 'DEVELOPMENT',
             role: 'about',
         },
         { type: 'separator' },

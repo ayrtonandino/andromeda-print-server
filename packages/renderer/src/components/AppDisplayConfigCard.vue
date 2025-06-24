@@ -7,7 +7,7 @@
 <template>
     <u-card>
         <template #header>
-            <div class="h-8" />
+            <a-title> Configuración Actual </a-title>
         </template>
 
         <div class="h-32">

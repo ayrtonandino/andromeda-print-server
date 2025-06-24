@@ -3,6 +3,7 @@ declare namespace App {
 
     export interface Config {
         printerModel: App.PrinterEnum
+        serverPort: number
         printerUrl: string
         printerPort: number
         openOnStartUp: boolean

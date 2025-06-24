@@ -14,14 +14,14 @@
 
     const tabsItem = [
         {
-            label: 'Configuración',
-            icon: 'i-lucide-cog',
-            slot: 'config' as const,
-        },
-        {
             label: 'Ticket',
             icon: 'i-lucide-ticket',
             slot: 'ticket' as const,
+        },
+        {
+            label: 'Configuración',
+            icon: 'i-lucide-cog',
+            slot: 'config' as const,
         },
     ] satisfies TabsItem[]
 
@@ -44,6 +44,7 @@
             printerModel: props.availablePrinters[0],
             printerUrl: '',
             printerPort: 0,
+            serverPort: 0,
             openOnStartUp: false,
             ticketShowClient: false,
             ticketShowItems: false,
@@ -110,6 +111,17 @@
                 <u-form-field label="Puerto de la impresora" :error="r$.$fields.printerPort.$error">
                     <u-input-number
                         v-model="form.printerPort" class="w-full" :min="0" :max="65535" placeholder="9100"
+                        orientation="vertical"
+                    />
+                </u-form-field>
+
+                <u-form-field
+                    label="Puerto del servidor"
+                    description="Requiere reiniciar la aplicación manualmente"
+                    :error="r$.$fields.serverPort.$error"
+                >
+                    <u-input-number
+                        v-model="form.serverPort" class="w-full" :min="0" :max="65535" placeholder="3005"
                         orientation="vertical"
                     />
                 </u-form-field>

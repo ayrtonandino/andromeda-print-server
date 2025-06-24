@@ -32,15 +32,15 @@
         "@app/main": "*"
     },
     "devDependencies": {
-        "@antfu/eslint-config": "^4.15.0",
+        "@antfu/eslint-config": "^4.16.1",
         "@npmcli/map-workspaces": "^4.0.2",
         "@playwright/test": "^1.53.1",
         "@types/cors": "^2.8.19",
         "@types/luxon": "^3.6.2",
-        "@types/node": "24.0.3",
-        "electron": "^36.5.0",
-        "electron-builder": "26.0.12",
-        "glob": "11.0.3",
+        "@types/node": "^24.0.4",
+        "electron": "^37.0.0",
+        "electron-builder": "^26.0.12",
+        "glob": "^11.0.3",
         "playwright": "^1.53.1"
     }
 }

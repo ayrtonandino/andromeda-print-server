@@ -12,6 +12,8 @@ export function getCoreData(): App.Config {
 
 export function setCoreData(value: App.Config): void {
     configStore.set(value)
+
+    ipcRenderer.send('updateOpenOnStartUp', value.openOnStartUp)
 }
 
 export function getAvailablePrinters(): PrinterTypes[] {

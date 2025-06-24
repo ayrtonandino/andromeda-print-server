@@ -5,6 +5,17 @@ import { getAvailablePrinters } from './api.js'
 const models = getAvailablePrinters()
 
 const schema: Schema<App.Config> = {
+    serverPort: {
+        type: 'number',
+        maximum: 65535,
+        minimum: 0,
+        default: 3005,
+    },
+    printerModel: {
+        type: 'string',
+        enum: models,
+        default: models[0],
+    },
     printerUrl: {
         type: 'string',
         format: 'uri',
@@ -15,11 +26,6 @@ const schema: Schema<App.Config> = {
         maximum: 65535,
         minimum: 0,
         default: 9100,
-    },
-    printerModel: {
-        type: 'string',
-        enum: models,
-        default: models[0],
     },
     openOnStartUp: {
         type: 'boolean',

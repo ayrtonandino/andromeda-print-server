@@ -149,6 +149,8 @@ app.use((error, response) => {
     return response.status(500).json({ error })
 })
 
-export function StartServer(port = 3005) {
-    app.listen(port, () => console.log(`Server running on port ${port}!`))
+export function StartServer() {
+    const serverPort = store.get('serverPort')
+
+    app.listen(serverPort, () => console.log(`Server running on port ${serverPort}!`))
 }

@@ -3,6 +3,7 @@ import { createModuleRunner } from './ModuleRunner.js'
 import { terminateAppOnLastWindowClose } from './modules/ApplicationTerminatorOnLastWindowClose.js'
 import { autoUpdater } from './modules/AutoUpdater.js'
 import { allowInternalOrigins } from './modules/BlockNotAllowdOrigins.js'
+import { chromeDevToolsExtension } from './modules/ChromeDevToolsExtension.js'
 import { allowExternalUrls } from './modules/ExternalUrls.js'
 import { hardwareAccelerationMode } from './modules/HardwareAccelerationModule.js'
 import { disallowMultipleAppInstance } from './modules/SingleInstanceApp.js'
@@ -17,7 +18,7 @@ export async function initApp(initConfig: AppInitConfig) {
         .init(autoUpdater())
 
         // Install DevTools extension if needed
-        // .init(chromeDevToolsExtension({extension: 'VUEJS3_DEVTOOLS'}))
+        .init(chromeDevToolsExtension({extension: 'VUEJS_DEVTOOLS'}))
 
         // Security
         .init(allowInternalOrigins(

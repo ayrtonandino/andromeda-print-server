@@ -38,7 +38,6 @@ class WindowManager implements AppModule {
             width: 900,
             height: 493,
             resizable: false,
-            // skipTaskbar: true,
             maximizable: false,
             webPreferences: {
                 nodeIntegration: false,

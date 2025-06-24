@@ -21,6 +21,22 @@ const schema: Schema<App.Config> = {
         enum: models,
         default: models[0],
     },
+    openOnStartUp: {
+        type: 'boolean',
+        default: true,
+    },
+    ticketShowClient: {
+        type: 'boolean',
+        default: true,
+    },
+    ticketShowItems: {
+        type: 'boolean',
+        default: true,
+    },
+    ticketShowQr: {
+        type: 'boolean',
+        default: true,
+    },
 }
 
 export default new Store({

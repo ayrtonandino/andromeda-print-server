@@ -5,7 +5,7 @@
 </script>
 
 <template>
-    <u-card>
+    <u-card variant="subtle">
         <template #header>
             <a-title> Configuración Actual </a-title>
         </template>

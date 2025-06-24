@@ -5,6 +5,10 @@ declare namespace App {
         printerModel: App.PrinterEnum
         printerUrl: string
         printerPort: number
+        openOnStartUp: boolean
+        ticketShowClient: boolean
+        ticketShowItems: boolean
+        ticketShowQr: boolean
     }
 
     export interface Api {

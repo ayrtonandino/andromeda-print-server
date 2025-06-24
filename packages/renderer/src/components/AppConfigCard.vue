@@ -1,6 +1,7 @@
 <script setup lang="ts">
+    import type { TabsItem } from '@nuxt/ui'
     import { useRegle } from '@regle/core'
-    import { ipv4Address, number, required, string } from '@regle/rules'
+    import { boolean, ipv4Address, number, required, string } from '@regle/rules'
 
     const props = defineProps<{
         availablePrinters: App.PrinterEnum[]
@@ -11,30 +12,52 @@
         'sync:data': []
     }>()
 
+    const tabsItem = [
+        {
+            label: 'Configuración',
+            icon: 'i-lucide-cog',
+            slot: 'config' as const,
+        },
+        {
+            label: 'Ticket',
+            icon: 'i-lucide-ticket',
+            slot: 'ticket' as const,
+        },
+    ] satisfies TabsItem[]
+
     const form = ref(getEmptyForm())
 
     const rules = computed(() => ({
         printerModel: { required, string },
         printerUrl: { required, ipv4Address },
         printerPort: { required, number },
+        openOnStartUp: { boolean },
+        ticketShowClient: { boolean },
+        ticketShowItems: { boolean },
+        ticketShowQr: { boolean },
     }))
 
     const { r$ } = useRegle(form, rules)
 
-    function getEmptyForm(): Undefinable<App.Config> {
+    function getEmptyForm(): App.Config {
         return {
-            printerModel: undefined,
-            printerUrl: undefined,
-            printerPort: undefined,
+            printerModel: props.availablePrinters[0],
+            printerUrl: '',
+            printerPort: 0,
+            openOnStartUp: false,
+            ticketShowClient: false,
+            ticketShowItems: false,
+            ticketShowQr: false,
         }
     }
 
     function submit() {
-        if (form.value.printerModel && form.value.printerUrl && form.value.printerPort) {
+        r$.$touch()
+
+        if (r$.$correct) {
             window.api.setCoreData({
-                printerModel: form.value.printerModel,
+                ...form.value,
                 printerUrl: `tcp://${form.value.printerUrl}`,
-                printerPort: form.value.printerPort,
             })
 
             emit('sync:data')
@@ -47,9 +70,8 @@
 
     function syncData() {
         form.value = {
+            ...props.defaultData,
             printerUrl: String(props.defaultData.printerUrl).replace('tcp://', ''),
-            printerPort: props.defaultData.printerPort,
-            printerModel: props.defaultData.printerModel,
         }
 
         r$.$reset()
@@ -63,40 +85,68 @@
 </script>
 
 <template>
-    <u-card>
-        <template #header>
-            <a-title> Configuración </a-title>
-        </template>
+    <u-card variant="subtle">
+        <u-tabs :items="tabsItem" :ui="{ trigger: 'grow', content: 'space-y-2' }">
+            <template #config>
+                <u-form-field label="Modelo de impresora" :error="r$.$fields.printerModel.$error">
+                    <u-select v-model="form.printerModel" :items="availablePrinters" class="w-full uppercase" />
+                </u-form-field>
 
-        <div class="space-y-2">
-            <u-form-field label="Modelo de impresora" :error="r$.$fields.printerModel.$error">
-                <u-select v-model="form.printerModel" :items="availablePrinters" class="w-full uppercase" />
-            </u-form-field>
+                <u-form-field label="Dirección de la impresora" :error="r$.$fields.printerUrl.$error">
+                    <u-input
+                        v-model="form.printerUrl" class="w-full" placeholder="127.0.0.1" :ui="{
+                            base: 'pl-12',
+                            leading: 'pointer-events-none',
+                        }"
+                    >
+                        <template #leading>
+                            <p class="text-sm text-muted">
+                                tcp://
+                            </p>
+                        </template>
+                    </u-input>
+                </u-form-field>
 
-            <u-form-field label="Dirección de la impresora" :error="r$.$fields.printerUrl.$error">
-                <u-input
-                    v-model="form.printerUrl" class="w-full" placeholder="127.0.0.1" :ui="{
-                        base: 'pl-12',
-                        leading: 'pointer-events-none',
-                    }"
-                >
-                    <template #leading>
-                        <p class="text-sm text-muted">
-                            tcp://
-                        </p>
-                    </template>
-                </u-input>
-            </u-form-field>
+                <u-form-field label="Puerto de la impresora" :error="r$.$fields.printerPort.$error">
+                    <u-input-number
+                        v-model="form.printerPort" class="w-full" :min="0" :max="65535" placeholder="9100"
+                        orientation="vertical"
+                    />
+                </u-form-field>
 
-            <u-form-field label="Puerto de la impresora" :error="r$.$fields.printerPort.$error">
-                <u-input-number
-                    v-model="form.printerPort" class="w-full" :min="0" :max="65535" placeholder="9100"
-                    orientation="vertical"
+                <u-switch
+                    v-model="form.openOnStartUp"
+                    unchecked-icon="i-lucide-x"
+                    checked-icon="i-lucide-check"
+                    label="Iniciar plugin automáticamente"
                 />
-            </u-form-field>
-        </div>
+            </template>
 
-        <template #footer>
+            <template #ticket>
+                <u-switch
+                    v-model="form.ticketShowClient"
+                    unchecked-icon="i-lucide-x"
+                    checked-icon="i-lucide-check"
+                    label="Incluir información de Cliente"
+                />
+
+                <u-switch
+                    v-model="form.ticketShowItems"
+                    unchecked-icon="i-lucide-x"
+                    checked-icon="i-lucide-check"
+                    label="Incluir Artículos"
+                />
+
+                <u-switch
+                    v-model="form.ticketShowQr"
+                    unchecked-icon="i-lucide-x"
+                    checked-icon="i-lucide-check"
+                    label="Incluir QR"
+                />
+            </template>
+        </u-tabs>
+
+        <template v-if="r$.$anyDirty" #footer>
             <div class="flex gap-3 justify-end">
                 <u-button color="error" @click="reset">Cancelar</u-button>
 

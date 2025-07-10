@@ -25,6 +25,8 @@
         },
     ] satisfies TabsItem[]
 
+    const { openModal, password, canSubmit } = usePasswordCheck()
+
     const form = ref(getEmptyForm())
 
     const rules = computed(() => ({
@@ -52,17 +54,27 @@
         }
     }
 
-    function submit() {
+    function shouldSubmit() {
         r$.$touch()
 
         if (r$.$correct) {
-            window.api.setCoreData({
-                ...form.value,
-                printerUrl: `tcp://${form.value.printerUrl}`,
-            })
-
-            emit('sync:data')
+            openModal.value = true
         }
+    }
+
+    function submit() {
+        window.api.setCoreData({
+            ...form.value,
+            printerUrl: `tcp://${form.value.printerUrl}`,
+        })
+
+        emit('sync:data')
+
+        openModal.value = false
+    }
+
+    function closeModal() {
+        openModal.value = false
     }
 
     function reset() {
@@ -83,6 +95,33 @@
     onMounted(() => {
         syncData()
     })
+
+    function usePasswordCheck() {
+        const openModal = ref(false)
+        const password = ref<number[]>([])
+
+        watch(openModal, (value): void => {
+            if (value) {
+                password.value = []
+            }
+        })
+
+        const canSubmit = computed((): boolean => {
+            const value = Number(password.value.join(''))
+
+            if (value === 292300) {
+                return true
+            }
+
+            return false
+        })
+
+        return {
+            openModal,
+            password,
+            canSubmit,
+        }
+    }
 </script>
 
 <template>
@@ -160,10 +199,37 @@
 
         <template v-if="r$.$anyDirty" #footer>
             <div class="flex gap-3 justify-end">
-                <u-button color="error" @click="reset">Cancelar</u-button>
+                <u-button block color="error" @click="reset">Cancelar</u-button>
 
-                <u-button color="success" @click="submit">Guardar</u-button>
+                <u-button block color="success" @click="shouldSubmit">Guardar</u-button>
             </div>
         </template>
     </u-card>
+
+    <u-modal v-model:open="openModal" :dismissible="false" title="Guardar nueva configuración">
+        <template #body>
+            <div class="flex items-center flex-col gap-6">
+                <u-pin-input v-model="password" autofocus type="number" :length="6" mask />
+            </div>
+        </template>
+
+        <template #footer>
+            <u-button
+                color="success"
+                block
+                :disabled="!canSubmit"
+                @click="submit"
+            >
+                Guardar
+            </u-button>
+
+            <u-button
+                color="error"
+                block
+                @click="closeModal"
+            >
+                Cancelar
+            </u-button>
+        </template>
+    </u-modal>
 </template>

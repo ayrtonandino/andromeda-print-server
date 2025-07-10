@@ -35,4 +35,17 @@ export default defineConfig({
             },
         }),
     ],
+
+    build: {
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    vue: ['vue', 'vue-router', 'reka-ui', '@unhead/vue'],
+                    axios: ['axios'],
+                    vueuse: ['@vueuse/core'],
+                    regle: ['@regle/core', '@regle/rules'],
+                },
+            },
+        },
+    },
 })

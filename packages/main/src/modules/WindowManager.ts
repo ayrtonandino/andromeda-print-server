@@ -35,8 +35,8 @@ class WindowManager implements AppModule {
         const browserWindow = new BrowserWindow({
             show: false, // Use the 'ready-to-show' event to show the instantiated BrowserWindow.
             titleBarStyle: 'hidden',
-            width: 900,
-            height: 493,
+            width: 920,
+            height: 520,
             resizable: false,
             maximizable: false,
             webPreferences: {

@@ -33,9 +33,11 @@
             <div class="flex flex-col gap-2">
                 <test-connection-button :port="defaultData.serverPort" />
 
-                <test-ticket-button :port="defaultData.serverPort" />
+                <div class="flex gap-2">
+                    <test-tag-button :port="defaultData.serverPort" />
 
-                <test-tag-button :port="defaultData.serverPort" />
+                    <test-ticket-button :port="defaultData.serverPort" />
+                </div>
             </div>
         </template>
     </u-card>

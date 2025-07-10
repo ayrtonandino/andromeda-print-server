@@ -1,3 +1,3 @@
-export type ModuleContext = {
-  readonly app: Electron.App;
+export interface ModuleContext {
+    readonly app: Electron.App
 }

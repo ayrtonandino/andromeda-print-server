@@ -1,18 +1,7 @@
-
-> [!Important]
-> This project is maintained by developer from Ukraine 🇺🇦
-> 
-> I do my best, but due to Russia's ongoing full-scale invasion of Ukraine, I barely have the energy to support open source projects.
->
-> If my work has been useful to you, please consider [supporting Ukraine](https://stand-with-ukraine.pp.ua/) or [me personally](https://send.monobank.ua/6SmojkkR9i). Even your **$1** has an impact!
-
-![IMG_0875](https://github.com/user-attachments/assets/590de304-e2c4-4935-9814-c18ade52fd8e)
-
-
 # Vite Electron Builder Boilerplate
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/cawa-93/vite-electron-builder?label=last%20update)
-![GitHub package.json dev/peer/optional dependency version](https://img.shields.io/github/package-json/dependency-version/cawa-93/vite-electron-builder/dev/electron) 
+![GitHub package.json dev/peer/optional dependency version](https://img.shields.io/github/package-json/dependency-version/cawa-93/vite-electron-builder/dev/electron)
 ![GitHub package.json dev/peer/optional dependency version](https://img.shields.io/github/package-json/dependency-version/cawa-93/vite-electron-builder/dev/electron-builder)
 ![GitHub package.json dev/peer/optional dependency version](https://img.shields.io/github/package-json/dependency-version/cawa-93/vite-electron-builder/dev/vite?filename=packages%2Fmain%2Fpackage.json)
 ![GitHub package.json dev/peer/optional dependency version](https://img.shields.io/github/package-json/dependency-version/cawa-93/vite-electron-builder/dev/playwright)
@@ -28,7 +17,7 @@ Follow these steps to get started with the template:
 2. Go to project folder and run `npm run init`.
 3. Start application in development mode by `npm start`.
 4. Compile executable by `npm run compile`.
- 
+
 That's all you need. 😉
 
 > [!TIP]
@@ -116,7 +105,6 @@ this.
 > This template is configured to use GitHub Releases to distribute updates, but you can configure whatever you need.
 > Find more in [electron-builder docs](https://www.electron.build/configuration/publish).
 
-
 ### Working with third-party dependencies
 
 Because the `renderer` works and builds like a _regular web application_, you can only use dependencies that support the
@@ -145,7 +133,7 @@ so you don't need to worry about it.
 
 ```ts
 // preload/src/index.ts
-import {readFile} from 'node:fs/promises';
+import { readFile } from 'node:fs/promises'
 
 // Encapsulate types if you use typescript
 interface UserData {
@@ -154,7 +142,7 @@ interface UserData {
 
 // Will call `electron.contextBridge.exposeInMainWorld('getUserData', getUserData)`
 export function getUserData(): Promise<UserData> {
-  return readFile('/path/to/file/in/user/filesystem.json', {encoding: 'utf8'}).then(JSON.parse);
+  return readFile('/path/to/file/in/user/filesystem.json', { encoding: 'utf8' }).then(JSON.parse)
 }
 ```
 
@@ -162,7 +150,7 @@ Now you can import and call the method in renderer
 
 ```ts
 // renderer/src/anywere/component.ts
-import {getUserData} from '@app/preload'
+import { getUserData } from '@app/preload'
 
 // Method will came from exposed context
 // const userData = globalThis['getUserData']
@@ -307,7 +295,6 @@ Set up the initial environment by creating a new renderer, integrating it, and i
 ## Contribution
 
 See [Contributing Guide](CONTRIBUTING.md).
-
 
 [vite]: https://github.com/vitejs/vite/
 

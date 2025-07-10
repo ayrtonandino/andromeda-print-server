@@ -1,6 +1,7 @@
 import type { printer as printerType } from 'node-thermal-printer'
 import { Joi } from 'express-validation'
 import { DateTime } from 'luxon'
+import store from '../../../preload/src/createStore.js'
 
 const ticketValidation = {
     body: Joi.object<TicketData>({
@@ -94,7 +95,9 @@ function addDates(printer: printerType, data: TicketData): void {
 }
 
 function addCliente(printer: printerType, data: TicketData): void {
-    if (data.cliente) {
+    const ticketShowClient = store.get('ticketShowClient')
+
+    if (data.cliente && ticketShowClient) {
         printer.println(String(data.cliente.dni))
         printer.println(`${data.cliente.apellido} ${data.cliente.nombre}`)
 
@@ -103,7 +106,9 @@ function addCliente(printer: printerType, data: TicketData): void {
 }
 
 function addArticulos(printer: printerType, data: TicketData): void {
-    if (data.articulos) {
+    const ticketShowItems = store.get('ticketShowItems')
+
+    if (data.articulos && ticketShowItems) {
         printer.setTypeFontB()
 
         data.articulos.forEach((articulo) => {
@@ -120,23 +125,27 @@ function addArticulos(printer: printerType, data: TicketData): void {
 }
 
 function addQr(printer: printerType, data: TicketData): void {
-    const utf8Bytes = new TextEncoder().encode(JSON.stringify({
-        ver: 1,
-        id: data.id,
-    }))
+    const ticketShowQr = store.get('ticketShowQr')
 
-    printer.alignCenter()
-    printer.printQR(
-        btoa(String.fromCharCode(...utf8Bytes)),
-        {
-            cellSize: 6,
-            correction: 'L',
-            model: 2,
-        },
-    )
-    printer.newLine()
+    if (ticketShowQr) {
+        const utf8Bytes = new TextEncoder().encode(JSON.stringify({
+            ver: 1,
+            id: data.id,
+        }))
 
-    printer.println(String('comprobante no valido como factura').toUpperCase())
+        printer.alignCenter()
+        printer.printQR(
+            btoa(String.fromCharCode(...utf8Bytes)),
+            {
+                cellSize: 6,
+                correction: 'L',
+                model: 2,
+            },
+        )
+        printer.newLine()
+
+        printer.println(String('comprobante no valido como factura').toUpperCase())
+    }
 }
 
 export { createTicket, ticketValidation }

@@ -15,8 +15,12 @@
         </div>
 
         <template #footer>
-            <div class="flex justify-center">
-                <test-connection-button />
+            <div class="flex flex-col gap-2">
+                <test-connection-button :port="defaultData.serverPort" />
+
+                <test-ticket-button :port="defaultData.serverPort" />
+
+                <test-tag-button :port="defaultData.serverPort" />
             </div>
         </template>
     </u-card>

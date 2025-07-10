@@ -1,15 +1,19 @@
 <script setup lang="ts">
     import axios from 'axios'
 
+    const props = defineProps<{
+        port: App.Config['serverPort']
+    }>()
+
     const toast = useToast()
 
-    async function testConnection() {
+    async function testConnection(): Promise<void> {
         return axios
-            .get('http://localhost:3005/status')
+            .get(`http://localhost:${props.port}/status`)
             .then((response) => {
                 toast.add({
                     title: 'Success',
-                    description: response?.data?.status || 'Connection successful',
+                    description: response?.data?.status || 'Conexión exitosa',
                     icon: 'i-lucide-wifi',
                     color: 'success',
                 })
@@ -17,15 +21,14 @@
             .catch((error) => {
                 toast.add({
                     title: 'Error',
-                    description: error?.response?.data?.error || 'Connection failed',
+                    description: error?.response?.data?.error || 'Conexión Fallida',
                     icon: 'i-lucide-wifi-off',
                     color: 'error',
                 })
             })
-        // )
     }
 </script>
 
 <template>
-    <u-button loading-auto @click="testConnection">Probar Conexión</u-button>
+    <u-button color="success" block loading-auto @click="testConnection">Probar Conexión</u-button>
 </template>

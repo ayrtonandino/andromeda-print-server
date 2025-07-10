@@ -65,6 +65,7 @@ export default antfu({
     },
 
     ignores: [
+        './electron-builder.mjs',
         '.github/**',
         '.yarn/**',
         'node_modules/**',

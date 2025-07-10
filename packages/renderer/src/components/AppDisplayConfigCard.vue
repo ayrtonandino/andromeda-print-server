@@ -1,18 +1,33 @@
 <script setup lang="ts">
-    defineProps<{
+    const props = defineProps<{
         defaultData: App.Config
     }>()
+
+    const data = computed(() => {
+        return [
+            {
+                clave: 'Modelo de impresora',
+                valor: props.defaultData.printerModel,
+            },
+            {
+                clave: 'Dirección de la impresora',
+                valor: props.defaultData.printerUrl,
+            },
+            {
+                clave: 'Puerto de la impresora',
+                valor: props.defaultData.printerPort,
+            },
+            {
+                clave: 'Puerto del servidor',
+                valor: props.defaultData.serverPort,
+            },
+        ]
+    })
 </script>
 
 <template>
     <u-card variant="subtle">
-        <template #header>
-            <a-title> Configuración Actual </a-title>
-        </template>
-
-        <div class="h-32">
-            {{ defaultData }}
-        </div>
+        <u-table variant="subtle" :data="data" />
 
         <template #footer>
             <div class="flex flex-col gap-2">

@@ -2,7 +2,6 @@
 # It is from here that all other workflows are launched.
 name: Entry CI
 on:
-  workflow_dispatch:
   workflow_call:
     inputs:
       distribution-channel:

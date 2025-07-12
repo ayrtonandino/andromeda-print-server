@@ -1,9 +1,10 @@
 {
+    "$schema": "https://json.schemastore.org/package.json",
     "name": "andromeda-print-server",
     "type": "module",
     "version": "0.1.1",
     "private": true,
-    "productName": "Andromeda Thermal Print Server",
+    "productName": "Andromeda-thermal-print-server",
     "description": "HTTP Service for printing on thermal printer from browser",
     "author": {
         "email": "ayrton.andino@outlook.com",

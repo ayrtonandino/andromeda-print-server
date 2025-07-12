@@ -1,4 +1,5 @@
 {
+    "$schema": "https://json.schemastore.org/package.json",
     "name": "@app/electron-versions",
     "type": "module",
     "description": "A set of helper functions to get the versions of internal components bundled within Electron",

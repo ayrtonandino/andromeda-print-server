@@ -1,0 +1,46 @@
+name: Test app
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - .editorconfig
+      - '.idea/**'
+      - '.vscode/**'
+
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: true
+
+
+jobs:
+  test_vue:
+    name: Vue (NODE ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [22.x]
+
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 'Use Node.js ${{ matrix.node-version }}'
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - run: npm ci
+
+      - run: 'npm run build'
+        name: Can build app
+
+      - run: 'npm run eslint'
+        name: eslint check after building
+
+      - run: 'npm run test'
+        name: vue-tsc test

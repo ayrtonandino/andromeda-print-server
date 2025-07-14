@@ -23,6 +23,7 @@
         "compile": "npm run build && electron-builder build --config electron-builder.mjs",
         "dev": "node packages/dev-mode.js",
         "test": "npm run typecheck -ws --if-present",
+        "eslint": "eslint . --cache",
         "create-renderer": "cd packages && npm create vite@latest renderer",
         "integrate-renderer": "npm start --workspace @app/integrate-renderer",
         "init": "npm run create-renderer && npm run integrate-renderer && npm install",

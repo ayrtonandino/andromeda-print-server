@@ -28,7 +28,7 @@ export function CreateAppTray(mainWindow: BrowserWindow) {
         mainWindow.show()
     })
 
-    tray.setToolTip('Andromeda Thermal Print Server')
+    tray.setToolTip('Andromeda Print Server')
 
     tray.setContextMenu(contextMenu)
 

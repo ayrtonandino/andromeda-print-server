@@ -5,7 +5,7 @@ export function getAvailablePrinters(): PrinterTypes[] {
     return Object.values(PrinterTypes)
 }
 
-function newPrinter(model: PrinterTypes, url: string, port: number) {
+function newPrinter(model: App.PrinterEnum, url: string, port: number) {
     return new ThermalPrinter({
         type: model,
         interface: `${url}:${port}`,

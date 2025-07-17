@@ -1,7 +1,7 @@
 import type { printer as printerType } from 'node-thermal-printer'
 import { Joi } from 'express-validation'
 import { DateTime } from 'luxon'
-import store from './storeService.js'
+import { appConfigStore } from './storeService.js'
 
 const ticketValidation = {
     body: Joi.object<TicketData>({
@@ -95,7 +95,7 @@ function addDates(printer: printerType, data: TicketData): void {
 }
 
 function addCliente(printer: printerType, data: TicketData): void {
-    const ticketShowClient = store.get('ticketShowClient')
+    const ticketShowClient = appConfigStore.get('ticketShowClient')
 
     if (data.cliente && ticketShowClient) {
         printer.println(String(data.cliente.dni))
@@ -106,7 +106,7 @@ function addCliente(printer: printerType, data: TicketData): void {
 }
 
 function addArticulos(printer: printerType, data: TicketData): void {
-    const ticketShowItems = store.get('ticketShowItems')
+    const ticketShowItems = appConfigStore.get('ticketShowItems')
 
     if (data.articulos && ticketShowItems) {
         printer.setTypeFontB()
@@ -125,7 +125,7 @@ function addArticulos(printer: printerType, data: TicketData): void {
 }
 
 function addQr(printer: printerType, data: TicketData): void {
-    const ticketShowQr = store.get('ticketShowQr')
+    const ticketShowQr = appConfigStore.get('ticketShowQr')
 
     if (ticketShowQr) {
         const utf8Bytes = new TextEncoder().encode(JSON.stringify({

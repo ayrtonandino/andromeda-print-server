@@ -1,6 +1,6 @@
-import { app, BrowserWindow, ipcMain } from 'electron'
+import { BrowserWindow, ipcMain } from 'electron'
 import { getAvailablePrinters } from '../services/printerService.js'
-import store from '../services/storeService.js'
+import { appConfigStore } from '../services/storeService.js'
 
 ipcMain.on('closeWindow', (event) => {
     BrowserWindow.getAllWindows()
@@ -9,7 +9,7 @@ ipcMain.on('closeWindow', (event) => {
 })
 
 ipcMain.handle('getCoreData', () => {
-    return store.store
+    return appConfigStore.store
 })
 
 ipcMain.handle('getAvailablePrinters', () => {
@@ -17,9 +17,5 @@ ipcMain.handle('getAvailablePrinters', () => {
 })
 
 ipcMain.on('setCoreData', (event, value: App.Config) => {
-    store.set(value)
-
-    app.setLoginItemSettings({
-        openAtLogin: value.openOnStartUp,
-    })
+    appConfigStore.set(value)
 })

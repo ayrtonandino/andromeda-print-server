@@ -1,6 +1,8 @@
 import type { Schema } from 'electron-store'
+import { app } from 'electron'
 import Store from 'electron-store'
 import { getAvailablePrinters } from './printerService.js'
+import { restartExpressServer } from './serverService.js'
 
 const models = getAvailablePrinters()
 
@@ -45,6 +47,20 @@ const schema: Schema<App.Config> = {
     },
 }
 
-export default new Store({
+export const appConfigStore = new Store({
     schema,
+})
+
+appConfigStore.onDidChange('serverPort', (newPort, oldPort) => {
+    if (newPort !== undefined) {
+        restartExpressServer(newPort, oldPort)
+    }
+})
+
+appConfigStore.onDidChange('openOnStartUp', (value) => {
+    if (value !== undefined) {
+        app.setLoginItemSettings({
+            openAtLogin: value,
+        })
+    }
 })

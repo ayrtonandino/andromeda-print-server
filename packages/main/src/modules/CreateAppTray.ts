@@ -2,7 +2,7 @@ import type { BrowserWindow } from 'electron'
 import { Menu, Tray } from 'electron'
 import icon from './GetAppTrayIcon.js'
 
-export function CreateAppTray(mainWindow: BrowserWindow) {
+export function createAppTray(mainWindow: BrowserWindow) {
     const tray = new Tray(icon)
 
     const contextMenu = Menu.buildFromTemplate([

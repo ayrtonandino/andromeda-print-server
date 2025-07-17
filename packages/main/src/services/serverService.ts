@@ -1,23 +1,26 @@
 /* eslint-disable no-console */
 import type { ThermalPrinter } from 'node-thermal-printer'
+import type http from 'node:http'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import express from 'express'
 import { validate, ValidationError } from 'express-validation'
 import { getPrinter } from './printerService.js'
-import store from './storeService.js'
+import { appConfigStore } from './storeService.js'
 import { createTag, tagValidation } from './tagService.js'
 import { createTicket, ticketValidation } from './ticketService.js'
 
-const app = express()
+const expressApp = express()
 
-app.use(cors())
+let server: http.Server | null = null
 
-app.use(bodyParser.urlencoded({ extended: false }))
+expressApp.use(cors())
 
-app.use(bodyParser.json())
+expressApp.use(bodyParser.urlencoded({ extended: false }))
 
-app.get('/status', async (request, response) => {
+expressApp.use(bodyParser.json())
+
+expressApp.get('/status', async (request, response) => {
     try {
         console.log('Printer test connection')
 
@@ -31,9 +34,9 @@ app.get('/status', async (request, response) => {
             return response.status(400).json({
                 error: 'Printer not connected',
                 printerData: {
-                    printerModel: store.get('printerModel'),
-                    printerUrl: store.get('printerUrl'),
-                    printerPort: store.get('printerPort'),
+                    printerModel: appConfigStore.get('printerModel'),
+                    printerUrl: appConfigStore.get('printerUrl'),
+                    printerPort: appConfigStore.get('printerPort'),
                 },
             })
         }
@@ -49,7 +52,7 @@ app.get('/status', async (request, response) => {
     response.json({ status: 'Server Online' })
 })
 
-app.post('/print', validate(ticketValidation, { keyByField: true }, {}), async (request, response) => {
+expressApp.post('/print', validate(ticketValidation, { keyByField: true }, {}), async (request, response) => {
     let printer: ThermalPrinter | null = null
 
     try {
@@ -94,7 +97,7 @@ app.post('/print', validate(ticketValidation, { keyByField: true }, {}), async (
     response.json({ status: 'Print success!' })
 })
 
-app.post('/tag', validate(tagValidation, { keyByField: true }, {}), async (request, response) => {
+expressApp.post('/tag', validate(tagValidation, { keyByField: true }, {}), async (request, response) => {
     let printer: ThermalPrinter | null = null
 
     try {
@@ -139,7 +142,7 @@ app.post('/tag', validate(tagValidation, { keyByField: true }, {}), async (reque
     response.json({ status: 'Print tag successful!' })
 })
 
-app.use((error, response) => {
+expressApp.use((error, response) => {
     if (error instanceof ValidationError) {
         console.error('Validation error:', error)
 
@@ -149,8 +152,20 @@ app.use((error, response) => {
     return response.status(500).json({ error })
 })
 
-export function StartServer() {
-    const serverPort = store.get('serverPort')
+export function startExpressServer(newPort?: number) {
+    const serverPort = newPort || appConfigStore.get('serverPort')
 
-    app.listen(serverPort, () => console.log(`Server running on port ${serverPort}!`))
+    server = expressApp.listen(serverPort, () => console.log(`Server running on port ${serverPort}!`))
+}
+
+export function restartExpressServer(newPort: number, oldPort?: number) {
+    if (server) {
+        server.close(() => {
+            console.log(`Server stopped on previous port ${oldPort}!`)
+
+            server = expressApp.listen(newPort, () => console.log(`Server restarted on port ${newPort}!`))
+        })
+    } else {
+        startExpressServer()
+    }
 }

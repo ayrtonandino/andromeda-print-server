@@ -2,14 +2,16 @@
     "$schema": "https://json.schemastore.org/package.json",
     "name": "andromeda-print-server",
     "type": "module",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "private": true,
-    "productName": "Andromeda-thermal-print-server",
+    "productName": "AndromedaPrintServer",
     "description": "HTTP Service for printing on thermal printer from browser",
     "author": {
         "email": "ayrton.andino@outlook.com",
         "name": "Ayrton Marcelo Andino Bonazzola"
     },
+    "license": "MIT",
+    "repository": "https://github.com/ayrtonandino/andromeda-print-server",
     "main": "packages/entry-point.mjs",
     "workspaces": [
         "packages/*"

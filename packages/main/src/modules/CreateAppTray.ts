@@ -2,7 +2,7 @@ import type { BrowserWindow } from 'electron'
 import { Menu, Tray } from 'electron'
 import icon from './GetAppTrayIcon.js'
 
-export function CreateAppTray(mainWindow: BrowserWindow) {
+export function createAppTray(mainWindow: BrowserWindow) {
     const tray = new Tray(icon)
 
     const contextMenu = Menu.buildFromTemplate([
@@ -28,7 +28,7 @@ export function CreateAppTray(mainWindow: BrowserWindow) {
         mainWindow.show()
     })
 
-    tray.setToolTip('Andromeda Thermal Print Server')
+    tray.setToolTip('Andromeda Print Server')
 
     tray.setContextMenu(contextMenu)
 

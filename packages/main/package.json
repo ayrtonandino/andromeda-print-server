@@ -16,6 +16,8 @@
         "@app/preload": "*",
         "@app/renderer": "*",
         "cors": "^2.8.5",
+        "dunder-proto": "^1.0.1",
+        "electron-store": "^10.1.0",
         "electron-updater": "^6.6.2",
         "express": "^5.1.0",
         "express-validation": "^4.1.1",
@@ -26,6 +28,6 @@
         "@app/electron-versions": "*",
         "electron-devtools-installer": "^4.0.0",
         "typescript": "^5.8.3",
-        "vite": "^7.0.4"
+        "vite": "^7.0.5"
     }
 }

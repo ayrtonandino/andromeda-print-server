@@ -1,22 +1,22 @@
 import { PrinterTypes, ThermalPrinter } from 'node-thermal-printer'
-import store from './storeService.js'
+import { appConfigStore } from './storeService.js'
 
 export function getAvailablePrinters(): PrinterTypes[] {
     return Object.values(PrinterTypes)
 }
 
-function newPrinter(model: App.PrinterEnum, url: string, port: number) {
+function newPrinter(model: App.PrinterEnum, url: string, port: number): ThermalPrinter {
     return new ThermalPrinter({
         type: model,
         interface: `${url}:${port}`,
     })
 }
 
-function getPrinter() {
+function getPrinter(): ThermalPrinter {
     return newPrinter(
-        store.get('printerModel'),
-        store.get('printerUrl'),
-        store.get('printerPort'),
+        appConfigStore.get('printerModel'),
+        appConfigStore.get('printerUrl'),
+        appConfigStore.get('printerPort'),
     )
 }
 

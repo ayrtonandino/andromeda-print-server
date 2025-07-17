@@ -1,7 +1,7 @@
 import type { printer as printerType } from 'node-thermal-printer'
 import { Joi } from 'express-validation'
 import { DateTime } from 'luxon'
-import store from './storeService.js'
+import { appConfigStore } from './storeService.js'
 
 const ticketValidation = {
     body: Joi.object<TicketData>({
@@ -53,20 +53,26 @@ function createTicket(printer: printerType, data: TicketData): void {
 }
 
 function addDisclaimer(printer: printerType): void {
-    printer.drawLine()
+    const ticketShowDisclaimer = appConfigStore.get('ticketShowDisclaimer')
 
-    printer.alignCenter()
-    printer.bold(true)
-    printer.println(String('ticket de cambio').toUpperCase())
-    printer.println(String('conservar para cambio').toUpperCase())
-    printer.bold(false)
-    printer.alignLeft()
+    if (ticketShowDisclaimer) {
+        printer.drawLine()
 
-    printer.drawLine()
+        printer.alignCenter()
+        printer.bold(true)
+        printer.println(String('ticket de cambio').toUpperCase())
+        printer.println(String('conservar para cambio').toUpperCase())
+        printer.bold(false)
+        printer.alignLeft()
+
+        printer.drawLine()
+    }
 }
 
 function addSucursal(printer: printerType, data: TicketData): void {
-    if (data.sucursal) {
+    const ticketShowSucursal = appConfigStore.get('ticketShowSucursal')
+
+    if (data.sucursal && ticketShowSucursal) {
         printer.alignCenter()
         printer.setTextQuadArea()
         printer.println(String(data.sucursal.nombre).toUpperCase())
@@ -95,7 +101,7 @@ function addDates(printer: printerType, data: TicketData): void {
 }
 
 function addCliente(printer: printerType, data: TicketData): void {
-    const ticketShowClient = store.get('ticketShowClient')
+    const ticketShowClient = appConfigStore.get('ticketShowClient')
 
     if (data.cliente && ticketShowClient) {
         printer.println(String(data.cliente.dni))
@@ -106,7 +112,7 @@ function addCliente(printer: printerType, data: TicketData): void {
 }
 
 function addArticulos(printer: printerType, data: TicketData): void {
-    const ticketShowItems = store.get('ticketShowItems')
+    const ticketShowItems = appConfigStore.get('ticketShowItems')
 
     if (data.articulos && ticketShowItems) {
         printer.setTypeFontB()
@@ -125,7 +131,7 @@ function addArticulos(printer: printerType, data: TicketData): void {
 }
 
 function addQr(printer: printerType, data: TicketData): void {
-    const ticketShowQr = store.get('ticketShowQr')
+    const ticketShowQr = appConfigStore.get('ticketShowQr')
 
     if (ticketShowQr) {
         const utf8Bytes = new TextEncoder().encode(JSON.stringify({

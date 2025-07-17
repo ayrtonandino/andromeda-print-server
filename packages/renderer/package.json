@@ -15,8 +15,8 @@
     },
     "dependencies": {
         "@nuxt/ui": "^3.2.0",
-        "@regle/core": "^1.5.3",
-        "@regle/rules": "^1.5.3",
+        "@regle/core": "^1.6.0",
+        "@regle/rules": "^1.6.0",
         "axios": "^1.10.0",
         "vue": "^3.5.17",
         "vue-router": "^4.5.1"
@@ -25,7 +25,7 @@
         "@vitejs/plugin-vue": "^6.0.0",
         "@vue/tsconfig": "^0.7.0",
         "typescript": "^5.8.3",
-        "vite": "^7.0.4",
-        "vue-tsc": "^3.0.1"
+        "vite": "^7.0.5",
+        "vue-tsc": "^3.0.2"
     }
 }

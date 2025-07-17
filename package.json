@@ -10,6 +10,8 @@
         "email": "ayrton.andino@outlook.com",
         "name": "Ayrton Marcelo Andino Bonazzola"
     },
+    "license": "MIT",
+    "repository": "https://github.com/ayrtonandino/andromeda-print-server",
     "main": "packages/entry-point.mjs",
     "workspaces": [
         "packages/*"

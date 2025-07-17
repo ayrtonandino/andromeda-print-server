@@ -4,7 +4,7 @@
     "type": "module",
     "version": "0.2.1",
     "private": true,
-    "productName": "Andromeda Print Server",
+    "productName": "AndromedaPrintServer",
     "description": "HTTP Service for printing on thermal printer from browser",
     "author": {
         "email": "ayrton.andino@outlook.com",

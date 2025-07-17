@@ -14,8 +14,8 @@ declare namespace App {
 
     export interface Api {
         closeWindow: () => void
-        getCoreData: () => App.Config
+        getCoreData: () => Promise<App.Config>
         setCoreData: (value: App.Config) => void
-        getAvailablePrinters: () => App.PrinterEnum[]
+        getAvailablePrinters: () => Promise<App.PrinterEnum[]>
     }
 }

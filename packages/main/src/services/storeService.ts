@@ -1,6 +1,6 @@
 import type { Schema } from 'electron-store'
 import Store from 'electron-store'
-import { getAvailablePrinters } from './api.js'
+import { getAvailablePrinters } from './printerService.js'
 
 const models = getAvailablePrinters()
 

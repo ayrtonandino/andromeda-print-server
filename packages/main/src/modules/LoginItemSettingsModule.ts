@@ -1,10 +1,10 @@
 import type { AppModule } from '../AppModule.js'
 import type { ModuleContext } from '../ModuleContext.js'
-import store from '../../../preload/src/createStore.js'
+import storeService from '../services/storeService.js'
 
 export class LoginItemSettingsModule implements AppModule {
     enable({ app }: ModuleContext): Promise<void> | void {
-        const userPrefersLogin = store.get('openOnStartUp')
+        const userPrefersLogin = storeService.get('openOnStartUp')
 
         app.setLoginItemSettings({
             openAtLogin: userPrefersLogin,

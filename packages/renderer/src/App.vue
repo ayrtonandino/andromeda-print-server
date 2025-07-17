@@ -3,10 +3,10 @@
 
     const defaultData = ref<App.Config | undefined>()
 
-    function getData() {
-        availablePrinters.value = window.api.getAvailablePrinters()
+    async function getData() {
+        availablePrinters.value = await window.api.getAvailablePrinters()
 
-        defaultData.value = window.api.getCoreData()
+        defaultData.value = await window.api.getCoreData()
     }
 
     onMounted(() => {

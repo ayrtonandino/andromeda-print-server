@@ -17,8 +17,7 @@
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
-        "electron-store": "^10.1.0",
-        "node-thermal-printer": "^4.5.0"
+        "electron-store": "^10.1.0"
     },
     "devDependencies": {
         "@app/electron-versions": "*",

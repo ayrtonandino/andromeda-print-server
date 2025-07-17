@@ -1,7 +1,7 @@
 import type { printer as printerType } from 'node-thermal-printer'
 import { Joi } from 'express-validation'
 import { DateTime } from 'luxon'
-import store from '../../../preload/src/createStore.js'
+import store from './storeService.js'
 
 const ticketValidation = {
     body: Joi.object<TicketData>({

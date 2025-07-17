@@ -7,6 +7,8 @@ declare namespace App {
         printerUrl: string
         printerPort: number
         openOnStartUp: boolean
+        ticketShowDisclaimer: boolean
+        ticketShowSucursal: boolean
         ticketShowClient: boolean
         ticketShowItems: boolean
         ticketShowQr: boolean

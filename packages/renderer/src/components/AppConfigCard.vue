@@ -19,8 +19,8 @@
             slot: 'ticket' as const,
         },
         {
-            label: 'Configuración',
-            icon: 'i-lucide-cog',
+            label: 'Impresora',
+            icon: 'i-lucide-printer',
             slot: 'config' as const,
         },
     ] satisfies TabsItem[]
@@ -34,6 +34,8 @@
         printerUrl: { required, ipv4Address },
         printerPort: { required, number },
         openOnStartUp: { boolean },
+        ticketShowDisclaimer: { boolean },
+        ticketShowSucursal: { boolean },
         ticketShowClient: { boolean },
         ticketShowItems: { boolean },
         ticketShowQr: { boolean },
@@ -48,6 +50,8 @@
             printerPort: 0,
             serverPort: 0,
             openOnStartUp: false,
+            ticketShowDisclaimer: false,
+            ticketShowSucursal: false,
             ticketShowClient: false,
             ticketShowItems: false,
             ticketShowQr: false,
@@ -154,11 +158,7 @@
                     />
                 </u-form-field>
 
-                <u-form-field
-                    label="Puerto del servidor"
-                    description="Requiere reiniciar la aplicación manualmente"
-                    :error="r$.$fields.serverPort.$error"
-                >
+                <u-form-field label="Puerto del servidor" :error="r$.$fields.serverPort.$error">
                     <u-input-number
                         v-model="form.serverPort" class="w-full" :min="0" :max="65535" placeholder="3005"
                         orientation="vertical"
@@ -175,24 +175,38 @@
 
             <template #ticket>
                 <u-switch
+                    v-model="form.ticketShowDisclaimer"
+                    unchecked-icon="i-lucide-x"
+                    checked-icon="i-lucide-check"
+                    label="Incluir leyenda de cambio"
+                />
+
+                <u-switch
+                    v-model="form.ticketShowSucursal"
+                    unchecked-icon="i-lucide-x"
+                    checked-icon="i-lucide-check"
+                    label="Incluir información de la sucursal"
+                />
+
+                <u-switch
                     v-model="form.ticketShowClient"
                     unchecked-icon="i-lucide-x"
                     checked-icon="i-lucide-check"
-                    label="Incluir información de Cliente"
+                    label="Incluir información del cliente"
                 />
 
                 <u-switch
                     v-model="form.ticketShowItems"
                     unchecked-icon="i-lucide-x"
                     checked-icon="i-lucide-check"
-                    label="Incluir Artículos"
+                    label="Incluir artículos vendidos"
                 />
 
                 <u-switch
                     v-model="form.ticketShowQr"
                     unchecked-icon="i-lucide-x"
                     checked-icon="i-lucide-check"
-                    label="Incluir QR"
+                    label="Incluir QR de cambio Andromeda"
                 />
             </template>
         </u-tabs>
@@ -206,10 +220,16 @@
         </template>
     </u-card>
 
-    <u-modal v-model:open="openModal" :dismissible="false" title="Guardar nueva configuración">
+    <u-modal v-model:open="openModal" :dismissible="false" title="Guardar nueva configuración" description="Ingrese su clave de seis dígitos">
         <template #body>
             <div class="flex items-center flex-col gap-6">
-                <u-pin-input v-model="password" autofocus type="number" :length="6" mask />
+                <u-pin-input
+                    v-model="password"
+                    autofocus
+                    type="number"
+                    :length="6"
+                    mask
+                />
             </div>
         </template>
 

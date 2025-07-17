@@ -33,11 +33,19 @@ const schema: Schema<App.Config> = {
         type: 'boolean',
         default: true,
     },
+    ticketShowSucursal: {
+        type: 'boolean',
+        default: true,
+    },
     ticketShowClient: {
         type: 'boolean',
         default: true,
     },
     ticketShowItems: {
+        type: 'boolean',
+        default: true,
+    },
+    ticketShowDisclaimer: {
         type: 'boolean',
         default: true,
     },

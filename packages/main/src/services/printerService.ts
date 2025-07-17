@@ -5,14 +5,14 @@ export function getAvailablePrinters(): PrinterTypes[] {
     return Object.values(PrinterTypes)
 }
 
-function newPrinter(model: App.PrinterEnum, url: string, port: number) {
+function newPrinter(model: App.PrinterEnum, url: string, port: number): ThermalPrinter {
     return new ThermalPrinter({
         type: model,
         interface: `${url}:${port}`,
     })
 }
 
-function getPrinter() {
+function getPrinter(): ThermalPrinter {
     return newPrinter(
         appConfigStore.get('printerModel'),
         appConfigStore.get('printerUrl'),

@@ -53,20 +53,26 @@ function createTicket(printer: printerType, data: TicketData): void {
 }
 
 function addDisclaimer(printer: printerType): void {
-    printer.drawLine()
+    const ticketShowDisclaimer = appConfigStore.get('ticketShowDisclaimer')
 
-    printer.alignCenter()
-    printer.bold(true)
-    printer.println(String('ticket de cambio').toUpperCase())
-    printer.println(String('conservar para cambio').toUpperCase())
-    printer.bold(false)
-    printer.alignLeft()
+    if (ticketShowDisclaimer) {
+        printer.drawLine()
 
-    printer.drawLine()
+        printer.alignCenter()
+        printer.bold(true)
+        printer.println(String('ticket de cambio').toUpperCase())
+        printer.println(String('conservar para cambio').toUpperCase())
+        printer.bold(false)
+        printer.alignLeft()
+
+        printer.drawLine()
+    }
 }
 
 function addSucursal(printer: printerType, data: TicketData): void {
-    if (data.sucursal) {
+    const ticketShowSucursal = appConfigStore.get('ticketShowSucursal')
+
+    if (data.sucursal && ticketShowSucursal) {
         printer.alignCenter()
         printer.setTextQuadArea()
         printer.println(String(data.sucursal.nombre).toUpperCase())

@@ -1,8 +1,8 @@
 import type { printer as printerType } from 'node-thermal-printer'
 import { Joi } from 'express-validation'
 
-const tagValidation = {
-    body: Joi.array()
+export const tagValidation = {
+    body: Joi.array<TagData[]>()
         .items(
             Joi.object<TagData>({
                 codigo: Joi.string().required(),
@@ -14,7 +14,7 @@ const tagValidation = {
         .required(),
 }
 
-function createTag(printer: printerType, data: TagData[]): void {
+export function createTag(printer: printerType, data: TagData[]): void {
     data.forEach((tag) => {
         const code = String(tag.codigo).toUpperCase()
         const description = getDescription(tag)
@@ -50,5 +50,3 @@ function getDescription(tag: TagData): string {
 
     return description.toUpperCase()
 }
-
-export { createTag, tagValidation }

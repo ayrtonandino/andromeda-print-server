@@ -15,7 +15,7 @@
                 <div class="flex-1 flex items-center">
                     <img :src="favicon" class="mr-3 h-6 w-6" name="ANDROMEDA" alt="ANDROMEDA">
 
-                    <h6 class="font-semibold text-white">Andromeda Thermal Print Server - {{ appVersion }}</h6>
+                    <h6 class="font-semibold text-white">Andromeda Print Server - {{ appVersion }}</h6>
                 </div>
 
                 <div>

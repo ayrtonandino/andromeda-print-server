@@ -2,7 +2,7 @@
     "$schema": "https://json.schemastore.org/package.json",
     "name": "andromeda-print-server",
     "type": "module",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "private": true,
     "productName": "AndromedaPrintServer",
     "description": "HTTP Service for printing on thermal printer from browser",
@@ -24,7 +24,7 @@
         "build": "npm run build -ws --if-present",
         "compile": "npm run build && electron-builder build --config electron-builder.mjs",
         "dev": "node packages/dev-mode.js",
-        "test": "npm run typecheck -ws --if-present",
+        "test": "npm run eslint && npm run typecheck -ws --if-present",
         "eslint": "eslint . --cache",
         "create-renderer": "cd packages && npm create vite@latest renderer",
         "integrate-renderer": "npm start --workspace @app/integrate-renderer",
@@ -42,6 +42,7 @@
         "@types/node": "^24.0.14",
         "electron": "^37.2.3",
         "electron-builder": "^26.0.12",
-        "glob": "^11.0.3"
+        "glob": "^11.0.3",
+        "vue-tsc": "^3.0.3"
     }
 }

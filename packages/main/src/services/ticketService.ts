@@ -3,7 +3,7 @@ import { Joi } from 'express-validation'
 import { DateTime } from 'luxon'
 import { appConfigStore } from './storeService.js'
 
-const ticketValidation = {
+export const ticketValidation = {
     body: Joi.object<TicketData>({
         id: Joi.number().required(),
         fecha: Joi.string().isoDate().required(),
@@ -34,7 +34,7 @@ const ticketValidation = {
     }),
 }
 
-function createTicket(printer: printerType, data: TicketData): void {
+export function createTicket(printer: printerType, data: TicketData): void {
     addDisclaimer(printer)
 
     addSucursal(printer, data)
@@ -153,5 +153,3 @@ function addQr(printer: printerType, data: TicketData): void {
         printer.println(String('comprobante no valido como factura').toUpperCase())
     }
 }
-
-export { createTicket, ticketValidation }

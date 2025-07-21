@@ -23,10 +23,10 @@
     ],
     "scripts": {
         "upd": "yarn upgrade-interactive && yarn dedupe",
-        "build": "yarn build -ws --if-present",
-        "compile": "yarn build && electron-builder build --config electron-builder.mjs",
+        "preview": "yarn workspaces foreach -p -A run preview || true",
+        "compile": "yarn preview && electron-builder build --config electron-builder.mjs",
         "dev": "node packages/dev-mode.js",
-        "test": "yarn eslint && yarn typecheck -ws --if-present",
+        "test": "yarn eslint && yarn workspaces foreach -p -A run typecheck || true",
         "eslint": "eslint . --cache",
         "selfupdate": "yarn set version stable",
         "lint": "eslint . --cache --fix"

@@ -13,7 +13,7 @@
         }
     },
     "scripts": {
-        "build": "vite build",
+        "preview": "vite build",
         "typecheck": "tsc --noEmit"
     },
     "devDependencies": {

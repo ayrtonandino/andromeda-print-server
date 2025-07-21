@@ -49,7 +49,7 @@ jobs:
         name: Setup boilerplate
 
       - run: yarn version "${{inputs.app-version}}"
-      - run: yarn compile -- -p never
+      - run: yarn compile -p never
         env:
           VITE_DISTRIBUTION_CHANNEL: ${{inputs.distribution-channel}}
 

@@ -37,7 +37,7 @@ jobs:
 
       - run: yarn install --immutable
 
-      - run: 'yarn build'
+      - run: 'yarn preview'
         name: Can build app
 
       - run: 'yarn eslint'

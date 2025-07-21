@@ -56,3 +56,14 @@ thumbs.db
 /.idea/csv-plugin.xml
 
 /test-results
+
+/.eslintcache
+.vite.*
+/.vite.*
+vite.config.ts.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

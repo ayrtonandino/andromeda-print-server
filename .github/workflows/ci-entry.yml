@@ -49,6 +49,8 @@ jobs:
 
   run-ci-for-template:
     name: ci.yml
+    needs: check-version-tag
+    if: needs.check-version-tag.outputs.tag-exists == 'false'
     uses: ./.github/workflows/ci.yml
     with:
       distribution-channel: 'release'

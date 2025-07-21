@@ -20,6 +20,33 @@ permissions:
   contents: write
 
 jobs:
+  check-version-tag:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.read-version.outputs.version }}
+      tag-exists: ${{ steps.check-tag.outputs.exists }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Read version from package.json
+        id: read-version
+        run: |
+          VERSION=$(jq -r .version package.json)
+          echo "VERSION=$VERSION"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Check if version tag exists
+        id: check-tag
+        run: |
+          VERSION=${{ steps.read-version.outputs.version }}
+          if git ls-remote --exit-code --tags origin "refs/tags/v$VERSION"; then
+            echo "Version tag v$VERSION exists"
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "Version tag v$VERSION does not exist"
+            echo "exists=false" >> $GITHUB_OUTPUT
+
   run-ci-for-template:
     name: ci.yml
     uses: ./.github/workflows/ci.yml

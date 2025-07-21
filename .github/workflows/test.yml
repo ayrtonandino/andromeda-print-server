@@ -33,14 +33,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+          cache: yarn
 
-      - run: npm ci
+      - run: yarn install --immutable
 
-      - run: 'npm run build'
+      - run: 'yarn build'
         name: Can build app
 
-      - run: 'npm run eslint'
+      - run: 'yarn eslint'
         name: eslint check after building
 
-      - run: 'npm run test'
+      - run: 'yarn test'
         name: vue-tsc test

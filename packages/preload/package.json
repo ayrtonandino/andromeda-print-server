@@ -17,7 +17,7 @@
         "typecheck": "tsc --noEmit"
     },
     "devDependencies": {
-        "@app/electron-versions": "*",
+        "@app/electron-versions": "workspace:*",
         "mlly": "^1.7.4",
         "typescript": "^5.8.3",
         "vite": "^7.0.5"

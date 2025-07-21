@@ -2,9 +2,10 @@
     "$schema": "https://json.schemastore.org/package.json",
     "name": "andromeda-print-server",
     "type": "module",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "private": true,
     "productName": "AndromedaPrintServer",
+    "packageManager": "yarn@4.9.2",
     "description": "HTTP Service for printing on thermal printer from browser",
     "author": {
         "email": "ayrton.andino@outlook.com",
@@ -13,36 +14,37 @@
     "license": "MIT",
     "repository": "https://github.com/ayrtonandino/andromeda-print-server",
     "main": "packages/entry-point.mjs",
+    "engines": {
+        "node": ">=22.x",
+        "yarn": ">=4"
+    },
     "workspaces": [
         "packages/*"
     ],
-    "engines": {
-        "node": ">=22.0.0"
-    },
     "scripts": {
-        "upd": "npm update",
-        "build": "npm run build -ws --if-present",
-        "compile": "npm run build && electron-builder build --config electron-builder.mjs",
+        "upd": "yarn upgrade-interactive && yarn dedupe",
+        "build": "yarn build -ws --if-present",
+        "compile": "yarn build && electron-builder build --config electron-builder.mjs",
         "dev": "node packages/dev-mode.js",
-        "test": "npm run eslint && npm run typecheck -ws --if-present",
+        "test": "yarn eslint && yarn typecheck -ws --if-present",
         "eslint": "eslint . --cache",
-        "create-renderer": "cd packages && npm create vite@latest renderer",
-        "integrate-renderer": "npm start --workspace @app/integrate-renderer",
-        "init": "npm run create-renderer && npm run integrate-renderer && npm install",
+        "selfupdate": "yarn set version stable",
         "lint": "eslint . --cache --fix"
     },
     "dependencies": {
-        "@app/main": "*"
+        "@app/main": "workspace:*"
     },
     "devDependencies": {
         "@antfu/eslint-config": "^4.17.0",
         "@npmcli/map-workspaces": "^4.0.2",
         "@types/cors": "^2.8.19",
         "@types/luxon": "^3.6.2",
-        "@types/node": "^24.0.14",
+        "@types/node": "^24.0.15",
         "electron": "^37.2.3",
-        "electron-builder": "^26.0.12",
+        "electron-builder": "26.0.12",
+        "eslint": "^9.31.0",
         "glob": "^11.0.3",
+        "typescript": "^5.8.3",
         "vue-tsc": "^3.0.3"
     }
 }

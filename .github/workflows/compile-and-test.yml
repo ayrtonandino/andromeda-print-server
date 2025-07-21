@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/init-template-with-renderer
         name: Setup boilerplate
-      - run: yarn typecheck --if-present
+      - run: yarn test --if-present
 
   compile:
     strategy:
@@ -48,7 +48,7 @@ jobs:
       - uses: ./.github/actions/init-template-with-renderer
         name: Setup boilerplate
 
-      - run: yarn version "${{inputs.app-version}}" --no-git-tag-version
+      - run: yarn version "${{inputs.app-version}}"
       - run: yarn compile -- -p never
         env:
           VITE_DISTRIBUTION_CHANNEL: ${{inputs.distribution-channel}}

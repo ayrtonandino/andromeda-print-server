@@ -9,7 +9,7 @@
     },
     "scripts": {
         "dev": "vite",
-        "preview": "vite build",
+        "preview": "vue-tsc -b && vite build --base ./",
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {

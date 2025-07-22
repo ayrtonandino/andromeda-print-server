@@ -5,7 +5,11 @@
         window.api.closeWindow()
     }
 
-    const appVersion = __APP_VERSION__ || 'DEVELOPMENT'
+    const appVersion = ref('DEVELOPMENT')
+
+    onMounted(async () => {
+        appVersion.value = await window.api.getVersion()
+    })
 </script>
 
 <template>

@@ -12,14 +12,14 @@ export function createAppTray(mainWindow: BrowserWindow) {
         },
         { type: 'separator' },
         {
-            label: 'Config',
+            label: 'Configurar',
             click() {
                 mainWindow.show()
             },
         },
         { type: 'separator' },
         {
-            label: 'Close',
+            label: 'Cerra',
             role: 'quit',
         },
     ])

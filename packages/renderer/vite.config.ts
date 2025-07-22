@@ -48,4 +48,14 @@ export default defineConfig({
             },
         },
     },
+
+    optimizeDeps: {
+        entries: ['./src/**/*.{vue,js,jsx,ts,tsx}'],
+        include: [
+            'reka-ui',
+            'axios',
+            '@regle/core',
+            '@regle/rules',
+        ],
+    },
 })

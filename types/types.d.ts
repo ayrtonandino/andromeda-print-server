@@ -15,6 +15,7 @@ declare namespace App {
     }
 
     export interface Api {
+        getVersion: () => Promise<string>
         closeWindow: () => void
         getCoreData: () => Promise<App.Config>
         setCoreData: (value: App.Config) => void

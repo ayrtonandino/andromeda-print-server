@@ -1,4 +1,3 @@
-import process from 'node:process'
 import { getChromeMajorVersion } from '@app/electron-versions'
 import { resolveModuleExportNames } from 'mlly'
 
@@ -7,9 +6,6 @@ export default /**
                 * @see https://vitejs.dev/config/
                 */
     ({
-        define: {
-            __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
-        },
         build: {
             ssr: true,
             sourcemap: 'inline',

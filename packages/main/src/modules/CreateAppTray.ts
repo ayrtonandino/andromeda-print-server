@@ -1,5 +1,5 @@
 import type { BrowserWindow } from 'electron'
-import { Menu, Tray } from 'electron'
+import { app, Menu, Tray } from 'electron'
 import icon from './GetAppTrayIcon.js'
 
 export function createAppTray(mainWindow: BrowserWindow) {
@@ -7,7 +7,7 @@ export function createAppTray(mainWindow: BrowserWindow) {
 
     const contextMenu = Menu.buildFromTemplate([
         {
-            label: __APP_VERSION__ || 'DEVELOPMENT',
+            label: app.getVersion() || 'DEVELOPMENT',
             role: 'about',
         },
         { type: 'separator' },

@@ -1,5 +1,9 @@
 import { ipcRenderer } from 'electron'
 
+export function getVersion(): Promise<string> {
+    return ipcRenderer.invoke('getVersion')
+}
+
 export function closeWindow(): void {
     ipcRenderer.send('closeWindow')
 }
@@ -17,8 +21,9 @@ export function getAvailablePrinters(): Promise<App.PrinterEnum[]> {
 }
 
 export const api = {
+    getVersion,
     closeWindow,
     getCoreData,
     setCoreData,
     getAvailablePrinters,
-}
+} satisfies App.Api

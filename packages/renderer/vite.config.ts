@@ -1,4 +1,3 @@
-import process from 'node:process'
 import { fileURLToPath, URL } from 'node:url'
 import ui from '@nuxt/ui/vite'
 import vue from '@vitejs/plugin-vue'
@@ -6,10 +5,6 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-    define: {
-        __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
-    },
-
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url)),

@@ -45,10 +45,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+
       - uses: ./.github/actions/init-template-with-renderer
         name: Setup boilerplate
 
-      - run: yarn version "${{inputs.app-version}}"
       - run: yarn compile -p never
         env:
           VITE_DISTRIBUTION_CHANNEL: ${{inputs.distribution-channel}}

@@ -11,7 +11,7 @@ export default /** @type import('electron-builder').Configuration */
             buildResources: 'buildResources',
         },
         generateUpdatesFilesForAllChannels: true,
-        electronLanguages: ['en-US', 'es'],
+        electronLanguages: ['en-US', 'es-419', 'es'],
         linux: {
             target: ['deb'],
         },

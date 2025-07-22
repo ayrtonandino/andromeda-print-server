@@ -49,7 +49,7 @@ jobs:
       - uses: ./.github/actions/init-template-with-renderer
         name: Setup boilerplate
 
-      - run: yarn compile -p never
+      - run: yarn compile
         env:
           VITE_DISTRIBUTION_CHANNEL: ${{inputs.distribution-channel}}
 

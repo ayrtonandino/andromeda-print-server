@@ -75,6 +75,7 @@ declare global {
   const useComponentIcons: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useComponentIcons.js')['useComponentIcons']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
+  const useFileUpload: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useFileUpload.js')['useFileUpload']
   const useFormField: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useFormField.js')['useFormField']
   const useId: typeof import('vue')['useId']
   const useKbd: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useKbd.js')['useKbd']
@@ -104,6 +105,9 @@ declare global {
   // @ts-ignore
   export type { UseComponentIconsProps } from '../../node_modules/@nuxt/ui/dist/runtime/composables/useComponentIcons.d'
   import('../../node_modules/@nuxt/ui/dist/runtime/composables/useComponentIcons.d')
+  // @ts-ignore
+  export type { UseFileUploadOptions } from '../../node_modules/@nuxt/ui/dist/runtime/composables/useFileUpload.d'
+  import('../../node_modules/@nuxt/ui/dist/runtime/composables/useFileUpload.d')
   // @ts-ignore
   export type { KbdKey, KbdKeySpecific } from '../../node_modules/@nuxt/ui/dist/runtime/composables/useKbd.d'
   import('../../node_modules/@nuxt/ui/dist/runtime/composables/useKbd.d')

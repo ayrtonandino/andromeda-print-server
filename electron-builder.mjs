@@ -12,6 +12,7 @@ export default /** @type import('electron-builder').Configuration */
         },
         generateUpdatesFilesForAllChannels: true,
         electronLanguages: ['en-US', 'es-419', 'es'],
+        publish: ["github"],
         linux: {
             target: ['deb'],
         },

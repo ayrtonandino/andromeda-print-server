@@ -2,7 +2,7 @@
     "$schema": "https://json.schemastore.org/package.json",
     "name": "andromeda-print-server",
     "type": "module",
-    "version": "0.4.3",
+    "version": "0.5.0",
     "private": true,
     "productName": "AndromedaPrintServer",
     "packageManager": "yarn@4.9.2",
@@ -35,16 +35,16 @@
         "@app/main": "workspace:*"
     },
     "devDependencies": {
-        "@antfu/eslint-config": "^4.17.0",
+        "@antfu/eslint-config": "^5.1.0",
         "@npmcli/map-workspaces": "^4.0.2",
         "@types/cors": "^2.8.19",
-        "@types/luxon": "^3.6.2",
-        "@types/node": "^24.1.0",
-        "electron": "^37.2.3",
-        "electron-builder": "26.0.19",
-        "eslint": "^9.31.0",
+        "@types/luxon": "^3.7.1",
+        "@types/node": "^24.2.0",
+        "electron": "^37.2.5",
+        "electron-builder": "26.0.12",
+        "eslint": "^9.32.0",
         "glob": "^11.0.3",
-        "typescript": "^5.8.3",
-        "vue-tsc": "^3.0.3"
+        "typescript": "^5.9.2",
+        "vue-tsc": "^3.0.5"
     }
 }

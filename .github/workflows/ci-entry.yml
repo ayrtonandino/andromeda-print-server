@@ -54,7 +54,7 @@ jobs:
     if: needs.check-version-tag.outputs.tag-exists == 'false'
     uses: ./.github/workflows/ci.yml
     with:
-      distribution-channel: 'release'
+      distribution-channel: 'latest'
     permissions:
       contents: write
       id-token: write

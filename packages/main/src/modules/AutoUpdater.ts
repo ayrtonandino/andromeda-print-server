@@ -35,6 +35,7 @@ export class AutoUpdater implements AppModule {
 
     async runAutoUpdater() {
         const updater = this.getAutoUpdater()
+
         try {
             updater.logger = this.#logger || null
             updater.fullChangelog = true
@@ -45,10 +46,8 @@ export class AutoUpdater implements AppModule {
 
             return await updater.checkForUpdatesAndNotify(this.#notification)
         } catch (error) {
-            if (error instanceof Error) {
-                if (error.message.includes('No published versions')) {
-                    return null
-                }
+            if (error instanceof Error && error.message.includes('No published versions')) {
+                return null
             }
 
             throw error

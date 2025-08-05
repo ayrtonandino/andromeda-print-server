@@ -49,7 +49,7 @@ export function createTicket(printer: printerType, data: TicketData): void {
 
     addDisclaimer(printer)
 
-    printer.cut()
+    finishPrint(printer)
 }
 
 function addDisclaimer(printer: printerType): void {
@@ -152,4 +152,10 @@ function addQr(printer: printerType, data: TicketData): void {
 
         printer.println(String('comprobante no valido como factura').toUpperCase())
     }
+}
+
+function finishPrint(printer: printerType): void {
+    const printerUseCut = appConfigStore.get('printerUseCut')
+
+    printerUseCut ? printer.cut() : printer.drawLine()
 }

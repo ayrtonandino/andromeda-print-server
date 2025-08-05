@@ -29,6 +29,10 @@ const schema: Schema<App.Config> = {
         minimum: 0,
         default: 9100,
     },
+    printerUseCut: {
+        type: 'boolean',
+        default: true,
+    },
     openOnStartUp: {
         type: 'boolean',
         default: true,

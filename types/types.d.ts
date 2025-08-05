@@ -6,6 +6,7 @@ declare namespace App {
         serverPort: number
         printerUrl: string
         printerPort: number
+        printerUseCut: boolean
         openOnStartUp: boolean
         ticketShowDisclaimer: boolean
         ticketShowSucursal: boolean

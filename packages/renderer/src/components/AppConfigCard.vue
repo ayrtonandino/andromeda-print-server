@@ -34,6 +34,7 @@
         printerModel: { required, string },
         printerUrl: { required, ipv4Address },
         printerPort: { required, number },
+        printerUseCut: { boolean },
         openOnStartUp: { boolean },
         ticketShowDisclaimer: { boolean },
         ticketShowSucursal: { boolean },
@@ -49,6 +50,7 @@
             printerModel: props.availablePrinters[0],
             printerUrl: '',
             printerPort: 0,
+            printerUseCut: false,
             serverPort: 0,
             openOnStartUp: false,
             ticketShowDisclaimer: false,
@@ -220,6 +222,13 @@
                     unchecked-icon="i-lucide-x"
                     checked-icon="i-lucide-check"
                     label="Incluir QR de cambio Andromeda"
+                />
+
+                <u-switch
+                    v-model="form.printerUseCut"
+                    unchecked-icon="i-lucide-x"
+                    checked-icon="i-lucide-check"
+                    label="Cortar papel al finalizar impresión"
                 />
             </template>
         </u-tabs>

@@ -1,5 +1,6 @@
 import type { printer as printerType } from 'node-thermal-printer'
 import { Joi } from 'express-validation'
+import { appConfigStore } from './storeService.js'
 
 export const tagValidation = {
     body: Joi.array<TagData[]>()
@@ -15,7 +16,7 @@ export const tagValidation = {
 }
 
 export function createTag(printer: printerType, data: TagData[]): void {
-    data.forEach((tag) => {
+    data.forEach((tag): void => {
         const code = String(tag.codigo).toUpperCase()
         const description = getDescription(tag)
 
@@ -33,7 +34,7 @@ export function createTag(printer: printerType, data: TagData[]): void {
         printer.println(description)
         printer.setTypeFontA()
 
-        printer.cut()
+        finishPrint(printer)
     })
 }
 
@@ -49,4 +50,10 @@ function getDescription(tag: TagData): string {
     }
 
     return description.toUpperCase()
+}
+
+function finishPrint(printer: printerType): void {
+    const printerUseCut = appConfigStore.get('printerUseCut')
+
+    printerUseCut ? printer.cut() : printer.drawLine()
 }

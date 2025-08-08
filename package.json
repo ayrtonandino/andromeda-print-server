@@ -2,7 +2,7 @@
     "$schema": "https://json.schemastore.org/package.json",
     "name": "andromeda-print-server",
     "type": "module",
-    "version": "0.5.1",
+    "version": "0.6.0",
     "private": true,
     "productName": "AndromedaPrintServer",
     "packageManager": "yarn@4.9.2",
@@ -42,7 +42,7 @@
         "@types/node": "^24.2.1",
         "electron": "^37.2.6",
         "electron-builder": "26.0.12",
-        "eslint": "^9.32.0",
+        "eslint": "^9.33.0",
         "glob": "^11.0.3",
         "typescript": "^5.9.2",
         "vue-tsc": "^3.0.5"

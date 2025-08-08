@@ -15,7 +15,7 @@ export async function initApp(initConfig: AppInitConfig) {
         .init(disallowMultipleAppInstance())
         .init(terminateAppOnLastWindowClose())
         .init(hardwareAccelerationMode({ enable: false }))
-        .init(autoUpdater())
+        .init(autoUpdater({ downloadNotification: { title: 'Actualización Disponible', body: 'Se va a actualizar el servidor de impresión de Andromeda' } }))
         .init(loginSettings())
 
         // Security

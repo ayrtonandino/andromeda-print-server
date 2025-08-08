@@ -44,6 +44,19 @@ export class AutoUpdater implements AppModule {
                 updater.channel = import.meta.env.VITE_DISTRIBUTION_CHANNEL
             }
 
+            // Asegura descarga automática y evita esperar al cierre manual
+            updater.autoDownload = true
+            updater.autoInstallOnAppQuit = true
+
+            // Instalar y reiniciar inmediatamente cuando termine de descargar
+            updater.once('update-downloaded', () => {
+                // Pequeño delay para evitar condiciones de carrera con el event loop
+                setTimeout(() => {
+                    // isSilent = false (instalación normal), isForceRunAfter = true (reinicia app)
+                    updater.quitAndInstall(false, true)
+                }, 100)
+            })
+
             return await updater.checkForUpdatesAndNotify(this.#notification)
         } catch (error) {
             if (error instanceof Error && error.message.includes('No published versions')) {

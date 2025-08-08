@@ -23,7 +23,7 @@ class WindowManager implements AppModule {
 
         startExpressServer()
 
-        const mainWindow = await this.restoreOrCreateWindow(true)
+        const mainWindow = await this.restoreOrCreateWindow()
 
         createAppTray(mainWindow)
 

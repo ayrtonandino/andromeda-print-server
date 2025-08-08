@@ -11,15 +11,12 @@ import { createWindowManagerModule } from './modules/WindowManager.js'
 
 export async function initApp(initConfig: AppInitConfig) {
     const moduleRunner = createModuleRunner()
-        .init(createWindowManagerModule({ initConfig, openDevTools: import.meta.env.DEV }))
+        .init(createWindowManagerModule({ initConfig, openDevTools: false }))
         .init(disallowMultipleAppInstance())
         .init(terminateAppOnLastWindowClose())
         .init(hardwareAccelerationMode({ enable: false }))
-        .init(autoUpdater())
+        .init(autoUpdater({ downloadNotification: { title: 'Actualización Disponible', body: 'Se va a actualizar el servidor de impresión de Andromeda' } }))
         .init(loginSettings())
-
-        // Install DevTools extension if needed
-        // .init(chromeDevToolsExtension({ extension: 'VUEJS_DEVTOOLS' }))
 
         // Security
         .init(allowInternalOrigins(

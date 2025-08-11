@@ -22,10 +22,11 @@ export function createTag(printer: printerType, data: TagData[]): void {
 
         printer.alignCenter()
 
-        printer.code128(code, {
+        printer.printBarcode(code, 73, {
+            hriPos: 0,
+            hriFont: 0,
+            width: 2,
             height: 110,
-            width: 'LARGE',
-            text: 4,
         })
 
         printer.println(code)

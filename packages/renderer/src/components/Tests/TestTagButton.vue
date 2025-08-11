@@ -9,7 +9,7 @@
 
     const tagData: TagData[] = [
         {
-            codigo: 'codigo',
+            codigo: '745sfa0001bXXXX',
             producto: 'producto',
             color: 'color',
             talle: 'talle',

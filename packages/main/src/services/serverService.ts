@@ -21,7 +21,10 @@ expressApp.use(bodyParser.urlencoded({ extended: false }))
 expressApp.use(bodyParser.json())
 
 expressApp.get('/connection', async (request, response) => {
-    response.json({ status: 'Conexión establecida correctamente.' })
+    response.json({
+        status: 'ok',
+        message: 'Conexión establecida correctamente.',
+    })
 })
 
 expressApp.get('/status', async (request, response) => {
@@ -163,13 +166,15 @@ export function startExpressServer(newPort?: number) {
 }
 
 export function restartExpressServer(newPort: number, oldPort?: number) {
-    if (server) {
+    if (server !== null) {
         server.close(() => {
             console.log(`Server stopped on previous port ${oldPort}!`)
 
             server = expressApp.listen(newPort, () => console.log(`Server restarted on port ${newPort}!`))
         })
-    } else {
-        startExpressServer()
+
+        return
     }
+
+    startExpressServer()
 }

@@ -14,7 +14,9 @@ const expressApp = express()
 
 let server: http.Server | null = null
 
-expressApp.use(cors())
+expressApp.use(cors({
+    origin: '*',
+}))
 
 expressApp.use(bodyParser.urlencoded({ extended: false }))
 

@@ -20,6 +20,10 @@ expressApp.use(bodyParser.urlencoded({ extended: false }))
 
 expressApp.use(bodyParser.json())
 
+expressApp.get('/connection', async (request, response) => {
+    response.json({ status: 'Conexión establecida correctamente.' })
+})
+
 expressApp.get('/status', async (request, response) => {
     try {
         console.log('Printer test connection')

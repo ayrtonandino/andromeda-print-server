@@ -27,7 +27,7 @@ jobs:
       tag-exists: ${{ steps.check-tag.outputs.exists }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
 
       - name: Read version from package.json
         id: read-version

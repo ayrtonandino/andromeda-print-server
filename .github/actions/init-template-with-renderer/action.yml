@@ -1,5 +1,7 @@
 name: Setup boilerplate
 
+description: Initializes template with renderer
+
 runs:
   using: "composite"
   steps:
@@ -9,7 +11,7 @@ runs:
         Xvfb :99 -screen 0 1280x960x24 &
         echo "DISPLAY=:99" >> $GITHUB_ENV
 
-    - uses: actions/setup-node@v4
+    - uses: actions/setup-node@v6
       with:
         node-version: 'latest'
         cache: yarn

@@ -35,9 +35,8 @@ export default defineConfig({
         rollupOptions: {
             output: {
                 manualChunks: {
-                    vue: ['vue', 'vue-router', 'reka-ui', '@unhead/vue'],
+                    vue: ['vue', 'vue-router', 'reka-ui', '@unhead/vue', '@vueuse/core'],
                     axios: ['axios'],
-                    vueuse: ['@vueuse/core'],
                     regle: ['@regle/core', '@regle/rules'],
                 },
             },

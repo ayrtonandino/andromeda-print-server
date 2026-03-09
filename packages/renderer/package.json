@@ -13,11 +13,11 @@
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
-        "@nuxt/ui": "^4.5.0",
-        "@regle/core": "^1.19.16",
-        "@regle/rules": "^1.19.16",
+        "@nuxt/ui": "^4.5.1",
+        "@regle/core": "^1.20.2",
+        "@regle/rules": "^1.20.2",
         "axios": "^1.13.6",
-        "vue": "^3.5.29",
+        "vue": "^3.5.30",
         "vue-router": "^4.6.4"
     },
     "devDependencies": {

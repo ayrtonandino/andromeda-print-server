@@ -35,14 +35,14 @@
         "@app/main": "workspace:*"
     },
     "devDependencies": {
-        "@antfu/eslint-config": "^7.6.1",
+        "@antfu/eslint-config": "^7.7.0",
         "@npmcli/map-workspaces": "^5.0.3",
         "@types/cors": "^2.8.19",
         "@types/luxon": "^3.7.1",
-        "@types/node": "^25.3.3",
-        "electron": "^40.6.1",
-        "electron-builder": "26.8.1",
-        "eslint": "^10.0.2",
+        "@types/node": "^25.4.0",
+        "electron": "^40.8.0",
+        "electron-builder": "26.8.2",
+        "eslint": "^10.0.3",
         "glob": "^13.0.6",
         "typescript": "^5.9.3",
         "vue-tsc": "^3.2.5"

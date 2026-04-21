@@ -7,9 +7,7 @@ import './assets/css/main.css'
 const app = createApp(App)
 
 const router = createRouter({
-    routes: [
-        { path: '/', component: () => import('./App.vue') },
-    ],
+    routes: [],
     history: createWebHistory(),
 })
 

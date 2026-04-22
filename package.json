@@ -15,7 +15,7 @@
     "repository": "https://github.com/ayrtonandino/andromeda-print-server",
     "main": "packages/entry-point.mjs",
     "engines": {
-        "node": ">=22.x",
+        "node": ">=24.x",
         "yarn": ">=4"
     },
     "workspaces": [

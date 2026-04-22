@@ -55,5 +55,8 @@
         "vue-demi": {
             "built": true
         }
+    },
+    "resolutions": {
+        "vue-demi": "0.14.10"
     }
 }

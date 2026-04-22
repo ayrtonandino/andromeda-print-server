@@ -14,11 +14,11 @@
     },
     "dependencies": {
         "@nuxt/ui": "^4.6.1",
-        "@regle/core": "^1.23.2",
-        "@regle/rules": "^1.23.2",
+        "@regle/core": "^1.23.1",
+        "@regle/rules": "^1.23.1",
         "axios": "^1.15.2",
-        "vue": "^3.5.33",
-        "vue-router": "^5.0.6"
+        "vue": "^3.5.32",
+        "vue-router": "^5.0.4"
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^6.0.6",

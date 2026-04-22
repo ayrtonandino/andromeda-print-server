@@ -32,6 +32,24 @@ export default defineConfig({
     ],
 
     build: {
-        chunkSizeWarningLimit: 1000,
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    vue: ['vue', 'vue-router', 'reka-ui', '@unhead/vue', '@vueuse/core'],
+                    axios: ['axios'],
+                    regle: ['@regle/core', '@regle/rules'],
+                },
+            },
+        },
+    },
+
+    optimizeDeps: {
+        entries: ['./src/**/*.{vue,js,jsx,ts,tsx}'],
+        include: [
+            'reka-ui',
+            'axios',
+            '@regle/core',
+            '@regle/rules',
+        ],
     },
 })

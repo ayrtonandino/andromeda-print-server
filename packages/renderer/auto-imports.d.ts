@@ -14,11 +14,11 @@ declare global {
   const customRef: typeof import('vue').customRef
   const defineAsyncComponent: typeof import('vue').defineAsyncComponent
   const defineComponent: typeof import('vue').defineComponent
-  const defineLocale: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/defineLocale').defineLocale
-  const defineShortcuts: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/defineShortcuts').defineShortcuts
+  const defineLocale: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/defineLocale.js').defineLocale
+  const defineShortcuts: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/defineShortcuts.js').defineShortcuts
   const effectScope: typeof import('vue').effectScope
-  const extendLocale: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/defineLocale').extendLocale
-  const extractShortcuts: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/defineShortcuts').extractShortcuts
+  const extendLocale: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/defineLocale.js').extendLocale
+  const extractShortcuts: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/defineShortcuts.js').extractShortcuts
   const fieldGroupInjectionKey: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useFieldGroup.js').fieldGroupInjectionKey
   const formBusInjectionKey: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useFormField.js').formBusInjectionKey
   const formErrorsInjectionKey: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useFormField.js').formErrorsInjectionKey
@@ -82,28 +82,27 @@ declare global {
   const useButtonGroup: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useButtonGroup.js')['useButtonGroup']
   const useComponentIcons: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useComponentIcons.js').useComponentIcons
   const useComponentUI: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useComponentUI.js').useComponentUI
-  const useContentSearch: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useContentSearch').useContentSearch
+  const useContentSearch: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useContentSearch.js').useContentSearch
   const useCssModule: typeof import('vue').useCssModule
   const useCssVars: typeof import('vue').useCssVars
   const useEditorMenu: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useEditorMenu.js').useEditorMenu
   const useFieldGroup: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useFieldGroup.js').useFieldGroup
-  const useFileUpload: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useFileUpload').useFileUpload
-  const useFormField: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useFormField').useFormField
+  const useFileUpload: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useFileUpload.js').useFileUpload
+  const useFormField: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useFormField.js').useFormField
   const useId: typeof import('vue').useId
-  const useKbd: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useKbd').useKbd
+  const useKbd: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useKbd.js').useKbd
   const useLink: typeof import('vue-router').useLink
   const useLocale: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useLocale.js').useLocale
   const useModel: typeof import('vue').useModel
-  const useOverlay: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useOverlay').useOverlay
+  const useOverlay: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useOverlay.js').useOverlay
   const usePortal: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/usePortal.js').usePortal
-  const useResizable: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useResizable').useResizable
+  const useResizable: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useResizable.js').useResizable
   const useRoute: typeof import('vue-router').useRoute
   const useRouter: typeof import('vue-router').useRouter
-  const useScrollShadow: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useScrollShadow').useScrollShadow
-  const useScrollspy: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useScrollspy').useScrollspy
+  const useScrollspy: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useScrollspy.js').useScrollspy
   const useSlots: typeof import('vue').useSlots
   const useTemplateRef: typeof import('vue').useTemplateRef
-  const useToast: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useToast').useToast
+  const useToast: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useToast.js').useToast
   const watch: typeof import('vue').watch
   const watchEffect: typeof import('vue').watchEffect
   const watchPostEffect: typeof import('vue').watchPostEffect
@@ -114,4 +113,31 @@ declare global {
   // @ts-ignore
   export type { Component, Slot, Slots, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, ShallowRef, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
+  // @ts-ignore
+  export type { ShortcutConfig, ShortcutsConfig, ShortcutsOptions } from '../../node_modules/@nuxt/ui/dist/runtime/composables/defineShortcuts.d'
+  import('../../node_modules/@nuxt/ui/dist/runtime/composables/defineShortcuts.d')
+  // @ts-ignore
+  export type { UseComponentIconsProps } from '../../node_modules/@nuxt/ui/dist/runtime/composables/useComponentIcons.d'
+  import('../../node_modules/@nuxt/ui/dist/runtime/composables/useComponentIcons.d')
+  // @ts-ignore
+  export type { ThemeUI, ThemeRootContext } from '../../node_modules/@nuxt/ui/dist/runtime/composables/useComponentUI.d'
+  import('../../node_modules/@nuxt/ui/dist/runtime/composables/useComponentUI.d')
+  // @ts-ignore
+  export type { EditorMenuOptions } from '../../node_modules/@nuxt/ui/dist/runtime/composables/useEditorMenu.d'
+  import('../../node_modules/@nuxt/ui/dist/runtime/composables/useEditorMenu.d')
+  // @ts-ignore
+  export type { UseFileUploadOptions } from '../../node_modules/@nuxt/ui/dist/runtime/composables/useFileUpload.d'
+  import('../../node_modules/@nuxt/ui/dist/runtime/composables/useFileUpload.d')
+  // @ts-ignore
+  export type { KbdKey, KbdKeySpecific } from '../../node_modules/@nuxt/ui/dist/runtime/composables/useKbd.d'
+  import('../../node_modules/@nuxt/ui/dist/runtime/composables/useKbd.d')
+  // @ts-ignore
+  export type { OverlayOptions, Overlay } from '../../node_modules/@nuxt/ui/dist/runtime/composables/useOverlay.d'
+  import('../../node_modules/@nuxt/ui/dist/runtime/composables/useOverlay.d')
+  // @ts-ignore
+  export type { UseResizableProps, UseResizableReturn } from '../../node_modules/@nuxt/ui/dist/runtime/composables/useResizable.d'
+  import('../../node_modules/@nuxt/ui/dist/runtime/composables/useResizable.d')
+  // @ts-ignore
+  export type { Toast } from '../../node_modules/@nuxt/ui/dist/runtime/composables/useToast.d'
+  import('../../node_modules/@nuxt/ui/dist/runtime/composables/useToast.d')
 }

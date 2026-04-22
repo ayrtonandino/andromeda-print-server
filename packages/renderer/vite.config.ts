@@ -31,7 +31,13 @@ export default defineConfig({
         }),
     ],
 
-    build: {
-        chunkSizeWarningLimit: 1000,
+    optimizeDeps: {
+        entries: ['./src/**/*.{vue,js,jsx,ts,tsx}'],
+        include: [
+            'reka-ui',
+            'axios',
+            '@regle/core',
+            '@regle/rules',
+        ],
     },
 })

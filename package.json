@@ -2,10 +2,10 @@
     "$schema": "https://json.schemastore.org/package.json",
     "name": "andromeda-print-server",
     "type": "module",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "private": true,
     "productName": "AndromedaPrintServer",
-    "packageManager": "yarn@4.14.1",
+    "packageManager": "yarn@4.13.0",
     "description": "HTTP Service for printing on thermal printer from browser",
     "author": {
         "email": "ayrton.andino@outlook.com",
@@ -15,7 +15,7 @@
     "repository": "https://github.com/ayrtonandino/andromeda-print-server",
     "main": "packages/entry-point.mjs",
     "engines": {
-        "node": ">=22.x",
+        "node": ">=24.x",
         "yarn": ">=4"
     },
     "workspaces": [

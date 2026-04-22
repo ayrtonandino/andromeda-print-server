@@ -2,7 +2,7 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 8
+  version: 9
   cacheKey: 10
 
 "7zip-bin@npm:~5.2.0":
@@ -3192,6 +3192,13 @@ __metadata:
     electron-builder: "npm:26.8.1"
     eslint: "npm:^10.2.1"
     typescript: "npm:^6.0.3"
+  dependenciesMeta:
+    electron:
+      built: true
+    esbuild:
+      built: true
+    vue-demi:
+      built: true
   languageName: unknown
   linkType: soft
 

@@ -31,18 +31,6 @@ export default defineConfig({
         }),
     ],
 
-    build: {
-        rollupOptions: {
-            output: {
-                manualChunks: {
-                    vue: ['vue', 'vue-router', 'reka-ui', '@unhead/vue', '@vueuse/core'],
-                    axios: ['axios'],
-                    regle: ['@regle/core', '@regle/rules'],
-                },
-            },
-        },
-    },
-
     optimizeDeps: {
         entries: ['./src/**/*.{vue,js,jsx,ts,tsx}'],
         include: [

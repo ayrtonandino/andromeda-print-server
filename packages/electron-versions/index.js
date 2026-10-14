@@ -2,7 +2,7 @@ import { execSync } from 'node:child_process'
 import process from 'node:process'
 
 function getElectronEnv() {
-    return JSON.parse(execSync(
+    const output = execSync(
         `npx electron -p "JSON.stringify(process.versions)"`,
         {
             encoding: 'utf-8',
@@ -11,7 +11,26 @@ function getElectronEnv() {
                 ELECTRON_RUN_AS_NODE: 1,
             },
         },
-    ))
+    )
+
+    const versionsJson = output
+        .trim()
+        .split(/\r?\n/)
+        .reverse()
+        .find((line) => {
+            try {
+                JSON.parse(line)
+                return true
+            } catch {
+                return false
+            }
+        })
+
+    if (!versionsJson) {
+        throw new SyntaxError(`Electron did not return version information: ${output}`)
+    }
+
+    return JSON.parse(versionsJson)
 }
 
 function createElectronEnvLoader() {

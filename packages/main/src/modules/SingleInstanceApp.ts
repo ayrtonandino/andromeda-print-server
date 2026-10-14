@@ -4,6 +4,10 @@ import process from 'node:process'
 
 class SingleInstanceApp implements AppModule {
     enable({ app }: { app: Electron.App }): void {
+        if (process.env.ANDROMEDA_SMOKE_TEST === 'true') {
+            return
+        }
+
         const isSingleInstance = app.requestSingleInstanceLock()
         if (!isSingleInstance) {
             app.quit()

@@ -42,5 +42,5 @@
 </script>
 
 <template>
-    <u-button block loading-auto @click="testConnection">Probar Etiqueta</u-button>
+    <u-button color="info" block loading-auto @click="testConnection">Probar Etiqueta</u-button>
 </template>

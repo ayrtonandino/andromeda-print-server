@@ -19,6 +19,11 @@
             slot: 'ticket' as const,
         },
         {
+            label: 'Factura B',
+            icon: 'i-lucide-receipt-text',
+            slot: 'facturaB' as const,
+        },
+        {
             label: 'Impresora',
             icon: 'i-lucide-printer',
             slot: 'config' as const,
@@ -41,6 +46,9 @@
         ticketShowClient: { boolean },
         ticketShowItems: { boolean },
         ticketShowQr: { boolean },
+        facturaBShowClient: { boolean },
+        facturaBShowItems: { boolean },
+        facturaBShowQr: { boolean },
     }))
 
     const { r$ } = useRegle(form, rules)
@@ -58,6 +66,9 @@
             ticketShowClient: false,
             ticketShowItems: false,
             ticketShowQr: false,
+            facturaBShowClient: false,
+            facturaBShowItems: false,
+            facturaBShowQr: false,
         }
     }
 
@@ -181,6 +192,13 @@
                 </u-form-field>
 
                 <u-switch
+                    v-model="form.printerUseCut"
+                    unchecked-icon="i-lucide-x"
+                    checked-icon="i-lucide-check"
+                    label="Cortar papel al finalizar impresión"
+                />
+
+                <u-switch
                     v-model="form.openOnStartUp"
                     unchecked-icon="i-lucide-x"
                     checked-icon="i-lucide-check"
@@ -223,12 +241,28 @@
                     checked-icon="i-lucide-check"
                     label="Incluir QR de cambio Andromeda"
                 />
+            </template>
 
+            <template #facturaB>
                 <u-switch
-                    v-model="form.printerUseCut"
+                    v-model="form.facturaBShowClient"
                     unchecked-icon="i-lucide-x"
                     checked-icon="i-lucide-check"
-                    label="Cortar papel al finalizar impresión"
+                    label="Incluir información del cliente"
+                />
+
+                <u-switch
+                    v-model="form.facturaBShowItems"
+                    unchecked-icon="i-lucide-x"
+                    checked-icon="i-lucide-check"
+                    label="Incluir artículos vendidos"
+                />
+
+                <u-switch
+                    v-model="form.facturaBShowQr"
+                    unchecked-icon="i-lucide-x"
+                    checked-icon="i-lucide-check"
+                    label="Incluir código QR"
                 />
             </template>
         </u-tabs>

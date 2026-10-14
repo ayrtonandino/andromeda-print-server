@@ -13,18 +13,18 @@
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
-        "@nuxt/ui": "^4.6.1",
-        "@regle/core": "^1.23.2",
-        "@regle/rules": "^1.23.2",
-        "axios": "^1.15.2",
-        "vue": "^3.5.33",
-        "vue-router": "^5.0.6"
+        "@nuxt/ui": "^4.11.3",
+        "@regle/core": "^1.29.5",
+        "@regle/rules": "^1.29.5",
+        "axios": "^1.20.0",
+        "vue": "^3.5.44",
+        "vue-router": "^5.4.0"
     },
     "devDependencies": {
-        "@vitejs/plugin-vue": "^6.0.6",
+        "@vitejs/plugin-vue": "^6.0.10",
         "@vue/tsconfig": "^0.9.1",
         "typescript": "^6.0.3",
-        "vite": "^8.0.9",
-        "vue-tsc": "^3.2.7"
+        "vite": "^8.3.4",
+        "vue-tsc": "^3.3.13"
     }
 }

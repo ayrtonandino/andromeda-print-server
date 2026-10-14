@@ -30,13 +30,15 @@
         <u-table variant="subtle" :data="data" />
 
         <template #footer>
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-1">
                 <test-connection-button :port="defaultData.serverPort" />
 
-                <div class="flex gap-2">
-                    <test-tag-button :port="defaultData.serverPort" />
+                <test-tag-button :port="defaultData.serverPort" />
 
+                <div class="flex gap-1">
                     <test-ticket-button :port="defaultData.serverPort" />
+
+                    <test-factura-b-button :port="defaultData.serverPort" />
                 </div>
             </div>
         </template>

@@ -18,6 +18,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TestConnectionButton: typeof import('./src/components/Tests/TestConnectionButton.vue')['default']
+    TestFacturaBButton: typeof import('./src/components/Tests/TestFacturaBButton.vue')['default']
     TestTagButton: typeof import('./src/components/Tests/TestTagButton.vue')['default']
     TestTicketButton: typeof import('./src/components/Tests/TestTicketButton.vue')['default']
     UApp: typeof import('./../../node_modules/@nuxt/ui/dist/runtime/components/App.vue')['default']

@@ -13,6 +13,9 @@ declare namespace App {
         ticketShowClient: boolean
         ticketShowItems: boolean
         ticketShowQr: boolean
+        facturaBShowClient: boolean
+        facturaBShowItems: boolean
+        facturaBShowQr: boolean
     }
 
     export interface Api {

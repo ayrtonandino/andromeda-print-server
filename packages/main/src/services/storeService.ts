@@ -1,4 +1,5 @@
 import type { Schema } from 'electron-store'
+import process from 'node:process'
 import { app } from 'electron'
 import Store from 'electron-store'
 import { getAvailablePrinters } from './printerService.js'
@@ -11,7 +12,7 @@ const schema: Schema<App.Config> = {
         type: 'number',
         maximum: 65535,
         minimum: 0,
-        default: 3005,
+        default: process.env.ANDROMEDA_SMOKE_TEST === 'true' ? 0 : 3005,
     },
     printerModel: {
         type: 'string',

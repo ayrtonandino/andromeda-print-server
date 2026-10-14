@@ -1,5 +1,6 @@
 import type { AppUpdater, Logger } from 'electron-updater'
 import type { AppModule } from '../AppModule.js'
+import process from 'node:process'
 import electronUpdater from 'electron-updater'
 
 type DownloadNotification = Parameters<AppUpdater['checkForUpdatesAndNotify']>[0]
@@ -23,6 +24,10 @@ export class AutoUpdater implements AppModule {
     }
 
     async enable(): Promise<void> {
+        if (process.env.ANDROMEDA_SMOKE_TEST === 'true') {
+            return
+        }
+
         await this.runAutoUpdater()
     }
 

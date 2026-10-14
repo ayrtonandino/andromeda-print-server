@@ -53,6 +53,8 @@ jobs:
         env:
           VITE_DISTRIBUTION_CHANNEL: ${{inputs.distribution-channel}}
 
+      - run: yarn smoke-test
+
       - run: yarn test --if-present
         if: matrix.os != 'ubuntu-latest'
 

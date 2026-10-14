@@ -57,6 +57,18 @@ const schema: Schema<App.Config> = {
         type: 'boolean',
         default: true,
     },
+    facturaBShowClient: {
+        type: 'boolean',
+        default: true,
+    },
+    facturaBShowItems: {
+        type: 'boolean',
+        default: true,
+    },
+    facturaBShowQr: {
+        type: 'boolean',
+        default: true,
+    },
 }
 
 export const appConfigStore = new Store({

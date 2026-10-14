@@ -17,17 +17,17 @@
         "@app/renderer": "workspace:*",
         "cors": "^2.8.6",
         "dunder-proto": "^1.0.1",
-        "electron-store": "^11.0.2",
-        "electron-updater": "6.8.3",
-        "express": "^5.2.1",
+        "electron-store": "^12.0.0",
+        "electron-updater": "6.8.9",
+        "express": "^5.3.0",
         "express-validation": "^4.1.1",
         "luxon": "^3.7.2",
-        "node-thermal-printer": "^4.6.0"
+        "node-thermal-printer": "^4.6.1"
     },
     "devDependencies": {
         "@app/electron-versions": "workspace:*",
         "electron-devtools-installer": "^4.0.0",
         "typescript": "^6.0.3",
-        "vite": "^8.0.9"
+        "vite": "^8.3.4"
     }
 }

@@ -23,7 +23,7 @@
     ],
     "scripts": {
         "upd": "yarn upgrade-interactive && yarn dedupe",
-        "preview": "yarn workspaces foreach -p -A run preview",
+        "preview": "node scripts/prewarm-electron.mjs && yarn workspaces foreach -p -A run preview",
         "compile": "yarn preview && electron-builder build --config electron-builder.mjs --publish never",
         "smoke-test": "node scripts/smoke-test.mjs",
         "dev": "node packages/dev-mode.js",
